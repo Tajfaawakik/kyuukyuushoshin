@@ -1,0 +1,278 @@
+:root {
+    --primary-color: #005a9c;
+    --secondary-color: #f0f8ff;
+    --border-color: #ccc;
+    --highlight-bg: #ffd700;
+    --highlight-text: #000;
+    --tag-bg: #e0e0e0;
+    --pinned-color: #ff4500;
+    --chief-complaint-color: #d32f2f;
+}
+
+body {
+    font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
+
+main {
+    padding: 1rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.controls {
+    margin-bottom: 1rem;
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.controls label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+#symptom-select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    min-height: 100px;
+}
+
+#selected-keywords-container {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background: var(--secondary-color);
+    border-radius: 8px;
+    border: 1px solid #e0e8f0;
+}
+
+#selected-keywords-container strong {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+#selected-keywords-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.keyword-tag {
+    background-color: var(--tag-bg);
+    color: #333;
+    padding: 0.3rem 0.7rem;
+    border-radius: 15px;
+    font-size: 0.9em;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.keyword-tag:hover {
+    background-color: #c7c7c7;
+}
+
+.keyword-tag .remove-tag::before {
+    content: ' ×';
+    font-weight: bold;
+    margin-left: 4px;
+}
+
+#results-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.symptom-group {
+    background: white;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    flex: 1 1 100%;
+    transition: border-color 0.3s;
+}
+
+.symptom-group.primary {
+    border: 2px solid var(--chief-complaint-color);
+}
+
+.symptom-group h2 {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 0.5rem;
+    margin-top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.primary-badge {
+    background-color: var(--chief-complaint-color);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 0.2rem 0.6rem;
+    border-radius: 10px;
+    margin-left: 1rem;
+}
+
+
+.disease-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    position: relative;
+    transition: border-color 0.3s;
+}
+
+.disease-card.pinned {
+    border-color: var(--pinned-color);
+    border-width: 1.5px;
+}
+
+.disease-card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.disease-card h3 {
+    margin: 0;
+    flex-grow: 1;
+}
+
+.disease-card-header .pin-button {
+    position: static;
+    font-size: 1.2rem;
+    order: 2; /* チェックボックス、h3の右に配置 */
+}
+
+/* ★★★ 鑑別疾患選択用チェックボックスのスタイル ★★★ */
+.diagnosis-checkbox {
+    width: 1.2rem;
+    height: 1.2rem;
+    cursor: pointer;
+    order: 0;
+}
+
+.disease-card h4 {
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    color: #555;
+    border-left: 4px solid var(--border-color);
+    padding-left: 8px;
+}
+
+.clickable-keyword {
+    cursor: pointer;
+    padding: 2px;
+    border-radius: 3px;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.clickable-keyword.highlighted {
+    background-color: var(--highlight-bg);
+    color: var(--highlight-text);
+    font-weight: bold;
+}
+
+.pin-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #ccc;
+    transition: color 0.2s, transform 0.2s;
+}
+
+.pin-button:hover {
+    transform: scale(1.2);
+}
+
+.pin-button.pinned {
+    color: var(--pinned-color);
+}
+
+/* ★★★ 記録・コピー用エリアのスタイル ★★★ */
+#record-copy-area {
+    margin-top: 2rem;
+    background-color: #fff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+#record-copy-area h2 {
+    margin-top: 0;
+    color: var(--primary-color);
+}
+
+#copy-textarea {
+    width: 100%;
+    height: 200px;
+    padding: 0.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.9em;
+    white-space: pre-wrap;
+    background-color: #f9f9f9;
+}
+
+#copy-button {
+    display: block;
+    margin-top: 1rem;
+    padding: 0.7rem 1.5rem;
+    border: none;
+    background-color: var(--primary-color);
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#copy-button:hover {
+    background-color: #004a8c;
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
+    font-size: 0.9em;
+    color: #666;
+}
+
+@media (min-width: 768px) {
+    .symptom-group {
+        flex-basis: calc(50% - 0.5rem);
+    }
+}
+
+@media (min-width: 1200px) {
+    .symptom-group {
+        flex-basis: calc(33.333% - 0.67rem);
+    }
+    .symptom-group.primary {
+       flex-basis: 50%;
+    }
+}

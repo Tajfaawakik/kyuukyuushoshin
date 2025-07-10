@@ -1,0 +1,3251 @@
+[
+    {
+        "symptom": "発熱",
+        "differential_diagnoses": [
+            {
+                "name": "上気道炎",
+                "interview_points": [
+                    "咳、鼻汁、咽頭痛"
+                ],
+                "physical_exam_points": [
+                    "咽頭発赤、扁桃腫大"
+                ]
+            },
+            {
+                "name": "肺炎",
+                "interview_points": [
+                    "咳、膿性痰、呼吸困難"
+                ],
+                "physical_exam_points": [
+                    "呼吸音の減弱、coarse crackles"
+                ]
+            },
+            {
+                "name": "尿路感染症",
+                "interview_points": [
+                    "排尿時痛、頻尿、背部痛"
+                ],
+                "physical_exam_points": [
+                    "背部の叩打痛 (CVA tenderness)"
+                ]
+            },
+            {
+                "name": "ウイルス性結膜炎",
+                "interview_points": [
+                    "眼の充血、眼脂"
+                ],
+                "physical_exam_points": [
+                    "結膜充血、リンパ節腫脹"
+                ]
+            },
+            {
+                "name": "感染性胆囊炎/胆管炎",
+                "interview_points": [
+                    "右上腹部痛、黄疸"
+                ],
+                "physical_exam_points": [
+                    "Murphy徴候、黄疸、腹部圧痛"
+                ]
+            },
+            {
+                "name": "感染性心内膜炎",
+                "interview_points": [
+                    "心雑音の既往、歯科治療歴、皮疹"
+                ],
+                "physical_exam_points": [
+                    "心雑音、点状出血、Osler結節"
+                ]
+            },
+            {
+                "name": "全身性エリテマトーデス (SLE)",
+                "interview_points": [
+                    "関節痛、皮疹（光線過敏）、漿膜炎症状"
+                ],
+                "physical_exam_points": [
+                    "蝶形紅斑、円板状皮疹、関節腫脹"
+                ]
+            },
+            {
+                "name": "悪性リンパ腫",
+                "interview_points": [
+                    "リンパ節腫脹、体重減少、盗汗"
+                ],
+                "physical_exam_points": [
+                    "表在リンパ節腫脹、肝脾腫"
+                ]
+            },
+            {
+                "name": "大動脈炎症候群",
+                "interview_points": [
+                    "若年女性、四肢の倦怠感、視力障害"
+                ],
+                "physical_exam_points": [
+                    "血圧左右差、血管雑音、脈拍欠損"
+                ]
+            },
+            {
+                "name": "リウマチ性多発筋痛症",
+                "interview_points": [
+                    "高齢者、肩や腰帯部の疼痛・こわばり"
+                ],
+                "physical_exam_points": [
+                    "肩・股関節の可動域制限、圧痛"
+                ]
+            },
+            {
+                "name": "IgG4関連疾患",
+                "interview_points": [
+                    "涙腺・唾液腺腫脹、後腹膜線維症"
+                ],
+                "physical_exam_points": [
+                    "涙腺・唾液腺の対称性腫脹"
+                ]
+            },
+            {
+                "name": "ツツガムシ病",
+                "interview_points": [
+                    "野外活動歴、ダニ刺咬歴、皮疹"
+                ],
+                "physical_exam_points": [
+                    "刺し口（痂皮）、全身の発疹"
+                ]
+            },
+            {
+                "name": "サルコイドーシス",
+                "interview_points": [
+                    "乾性咳嗽、皮疹、視力低下"
+                ],
+                "physical_exam_points": [
+                    "両側肺門リンパ節腫脹(BHL)、ぶどう膜炎"
+                ]
+            }
+        ]
+    },
+    {
+        "symptom": "全身倦怠感",
+        "differential_diagnoses": [
+            {
+                "name": "発熱を伴う疾患",
+                "interview_points": [
+                    "発熱、感染を示唆する局所症状"
+                ],
+                "physical_exam_points": [
+                    "バイタルサイン、感染巣の探索"
+                ]
+            },
+            {
+                "name": "急性・慢性肝炎、肝硬変",
+                "interview_points": [
+                    "黄疸、腹水、食思不振"
+                ],
+                "physical_exam_points": [
+                    "黄疸、腹水、肝脾腫、くも状血管腫"
+                ]
+            },
+            {
+                "name": "結核",
+                "interview_points": [
+                    "微熱、盗汗、体重減少、咳嗽"
+                ],
+                "physical_exam_points": [
+                    "呼吸音の異常、リンパ節腫脹"
+                ]
+            },
+            {
+                "name": "更年期障害",
+                "interview_points": [
+                    "ほてり、発汗、動悸、月経異常"
+                ],
+                "physical_exam_points": [
+                    "特異的所見に乏しいことが多い"
+                ]
+            },
+            {
+                "name": "甲状腺機能亢進症",
+                "interview_points": [
+                    "動悸、体重減少、発汗、手指振戦"
+                ],
+                "physical_exam_points": [
+                    "頻脈、甲状腺腫、眼球突出、手指振戦"
+                ]
+            },
+            {
+                "name": "甲状腺機能低下症",
+                "interview_points": [
+                    "体重増加、嗄声、便秘、徐脈傾向"
+                ],
+                "physical_exam_points": [
+                    "徐脈、甲状腺腫、下腿浮腫、アキレス腱反射遅延"
+                ]
+            },
+            {
+                "name": "うつ病",
+                "interview_points": [
+                    "抑うつ気分、興味・喜びの喪失、睡眠障害"
+                ],
+                "physical_exam_points": [
+                    "精神運動制止、表情の乏しさ"
+                ]
+            },
+            {
+                "name": "副腎不全",
+                "interview_points": [
+                    "低血圧、色素沈着、食思不振、悪心"
+                ],
+                "physical_exam_points": [
+                    "低血圧、皮膚・口腔粘膜の色素沈着"
+                ]
+            },
+            {
+                "name": "悪性腫瘍全般",
+                "interview_points": [
+                    "意図しない体重減少、食思不振"
+                ],
+                "physical_exam_points": [
+                    "リンパ節腫脹、腫瘤触知、貧血様顔貌"
+                ]
+            },
+            {
+                "name": "貧血",
+                "interview_points": [
+                    "動悸、息切れ、めまい、蒼白"
+                ],
+                "physical_exam_points": [
+                    "眼瞼結膜蒼白、頻脈、舌乳頭萎縮"
+                ]
+            },
+            {
+                "name": "心不全",
+                "interview_points": [
+                    "呼吸困難、起座呼吸、下腿浮腫"
+                ],
+                "physical_exam_points": [
+                    "頸静脈怒張、III音、肺うっ血、下腿浮腫"
+                ]
+            },
+            {
+                "name": "腎不全",
+                "interview_points": [
+                    "浮腫、尿量減少、食思不振"
+                ],
+                "physical_exam_points": [
+                    "高血圧、浮腫、貧血様顔貌"
+                ]
+            },
+            {
+                "name": "薬剤性",
+                "interview_points": [
+                    "新規薬剤の開始時期との関連"
+                ],
+                "physical_exam_points": [
+                    "原因薬剤に特異的な所見"
+                ]
+            },
+            {
+                "name": "妊娠",
+                "interview_points": [
+                    "月経の遅延、悪心・嘔吐"
+                ],
+                "physical_exam_points": [
+                    "子宮底長の増大、乳房の変化"
+                ]
+            },
+            {
+                "name": "熱中症",
+                "interview_points": [
+                    "高温環境での活動歴、発汗、頭痛"
+                ],
+                "physical_exam_points": [
+                    "高体温、頻脈、皮膚の乾燥または湿潤"
+                ]
+            }
+        ]
+    },
+    {
+        "symptom": "食思（欲）不振",
+        "differential_diagnoses": [
+            {
+                "name": "心不全",
+                "interview_points": [
+                    "呼吸困難、浮腫、動悸"
+                ],
+                "physical_exam_points": [
+                    "頸静脈怒張、III音、肺うっ血、下腿浮腫"
+                ]
+            },
+            {
+                "name": "慢性閉塞性肺疾患(COPD)",
+                "interview_points": [
+                    "労作時呼吸困難、咳嗽、喫煙歴"
+                ],
+                "physical_exam_points": [
+                    "樽状胸、呼吸音減弱、呼気延長"
+                ]
+            },
+            {
+                "name": "うつ病",
+                "interview_points": [
+                    "抑うつ気分、興味・喜びの喪失、睡眠障害"
+                ],
+                "physical_exam_points": [
+                    "精神運動制止、表情の乏しさ"
+                ]
+            },
+            {
+                "name": "胃潰瘍・十二指腸潰瘍",
+                "interview_points": [
+                    "心窩部痛（食事との関連）、黒色便"
+                ],
+                "physical_exam_points": [
+                    "心窩部圧痛、貧血様顔貌"
+                ]
+            },
+            {
+                "name": "悪性腫瘍全般（特に消化器癌）",
+                "interview_points": [
+                    "意図しない体重減少、腹痛、便通変化"
+                ],
+                "physical_exam_points": [
+                    "リンパ節腫脹、腹部腫瘤、肝腫大、黄疸"
+                ]
+            },
+            {
+                "name": "機能性ディスペプシア(FD)",
+                "interview_points": [
+                    "食後のもたれ、早期飽満感、器質的疾患の除外"
+                ],
+                "physical_exam_points": [
+                    "特異的な身体所見に乏しい"
+                ]
+            },
+            {
+                "name": "甲状腺機能低下症",
+                "interview_points": [
+                    "全身倦怠感、体重増加、便秘"
+                ],
+                "physical_exam_points": [
+                    "徐脈、甲状腺腫、下腿浮腫"
+                ]
+            },
+            {
+                "name": "妊娠",
+                "interview_points": [
+                    "月経の遅延、悪心・嘔吐（つわり）"
+                ],
+                "physical_exam_points": [
+                    "子宮底長の増大、乳房の変化"
+                ]
+            }
+        ]
+    },
+    {
+        "symptom": "体重減少",
+        "differential_diagnoses": [
+            {
+                "name": "悪性腫瘍全般",
+                "interview_points": [
+                    "食思不振、倦怠感、局所症状（咳、腹痛、血便等）"
+                ],
+                "physical_exam_points": [
+                    "リンパ節腫脹、腹部腫瘤、貧血様顔貌"
+                ]
+            },
+            {
+                "name": "糖尿病（特に1型）",
+                "interview_points": [
+                    "多飲、多尿、多食、倦怠感"
+                ],
+                "physical_exam_points": [
+                    "脱水所見、呼気のアセトン臭"
+                ]
+            },
+            {
+                "name": "甲状腺機能亢進症",
+                "interview_points": [
+                    "食欲亢進、動悸、発汗、手指振戦、易刺激性"
+                ],
+                "physical_exam_points": [
+                    "頻脈、甲状腺腫、眼球突出、手指振戦"
+                ]
+            },
+            {
+                "name": "慢性感染症（結核など）",
+                "interview_points": [
+                    "微熱、盗汗、咳、痰、倦怠感"
+                ],
+                "physical_exam_points": [
+                    "呼吸音の異常、リンパ節腫脹"
+                ]
+            },
+            {
+                "name": "感染性心内膜炎",
+                "interview_points": [
+                    "遷延する発熱、倦怠感、心雑音の既往"
+                ],
+                "physical_exam_points": [
+                    "発熱、心雑音、点状出血、脾腫"
+                ]
+            },
+            {
+                "name": "摂食障害（神経性食思不振症）",
+                "interview_points": [
+                    "ボディイメージの歪み、意図的な食事制限、過活動"
+                ],
+                "physical_exam_points": [
+                    "著明なやせ、徐脈、低体温、産毛の密生"
+                ]
+            },
+            {
+                "name": "うつ病",
+                "interview_points": [
+                    "食思不振、抑うつ気分、興味・喜びの喪失"
+                ],
+                "physical_exam_points": [
+                    "精神運動制止、表情の乏しさ"
+                ]
+            }
+        ]
+    },
+    {
+        "symptom": "体重増加",
+        "differential_diagnoses": [
+            {
+                "name": "心不全",
+                "interview_points": [
+                    "呼吸困難、起座呼吸、動悸、下肢のむくみ"
+                ],
+                "physical_exam_points": [
+                    "頸静脈怒張、III音、肺うっ血、圧痕性浮腫"
+                ]
+            },
+            {
+                "name": "腎不全・ネフローゼ症候群",
+                "interview_points": [
+                    "尿量減少、泡立つ尿、全身のむくみ"
+                ],
+                "physical_exam_points": [
+                    "高血圧、全身性浮腫（特に眼瞼）、貧血様顔貌"
+                ]
+            },
+            {
+                "name": "肝硬変",
+                "interview_points": [
+                    "腹部膨満、黄疸、倦怠感、アルコール多飲歴"
+                ],
+                "physical_exam_points": [
+                    "腹水、黄疸、くも状血管腫、手掌紅斑、脾腫"
+                ]
+            },
+            {
+                "name": "甲状腺機能低下症",
+                "interview_points": [
+                    "倦怠感、寒がり、便秘、嗄声、皮膚乾燥"
+                ],
+                "physical_exam_points": [
+                    "徐脈、甲状腺腫、圧痕を伴わない浮腫、アキレス腱反射遅延"
+                ]
+            },
+            {
+                "name": "Cushing症候群",
+                "interview_points": [
+                    "中心性肥満、満月様顔貌、皮膚線条、筋力低下"
+                ],
+                "physical_exam_points": [
+                    "中心性肥満、満月様顔貌、野牛肩、赤色皮膚線条"
+                ]
+            },
+            {
+                "name": "薬剤性",
+                "interview_points": [
+                    "ステロイド、抗精神病薬、経口血糖降下薬などの使用歴"
+                ],
+                "physical_exam_points": [
+                    "原因薬剤に特異的な所見、浮腫"
+                ]
+            },
+            {
+                "name": "単純性肥満",
+                "interview_points": [
+                    "過食、運動不足などの生活習慣"
+                ],
+                "physical_exam_points": [
+                    "全身性の脂肪沈着、内臓脂肪型か皮下脂肪型かの評価"
+                ]
+            },
+            {
+                "name": "妊娠",
+                "interview_points": [
+                    "月経の遅延、つわり"
+                ],
+                "physical_exam_points": [
+                    "子宮底長の増大"
+                ]
+            }
+        ]
+    },
+    {
+        "symptom": "ショック",
+        "differential_diagnoses": [
+            {
+                "name": "循環血液量減少性ショック - 出血性（外傷、消化管出血など）",
+                "interview_points": [
+                    "外傷歴、吐血・下血、腹痛"
+                ],
+                "physical_exam_points": [
+                    "外出血、頻脈、皮膚蒼白、腹部膨隆・圧痛"
+                ]
+            },
+            {
+                "name": "循環血液量減少性ショック - 非出血性（脱水、熱傷など）",
+                "interview_points": [
+                    "嘔吐、下痢、経口摂取不良、多尿"
+                ],
+                "physical_exam_points": [
+                    "皮膚ツルゴール低下、口腔粘膜乾燥、頻脈"
+                ]
+            },
+            {
+                "name": "心原性ショック - 急性心筋梗塞、重症心不全",
+                "interview_points": [
+                    "胸痛、呼吸困難、冷汗、既往歴"
+                ],
+                "physical_exam_points": [
+                    "頻脈or徐脈、III音、肺うっ血(湿性ラ音)、頸静脈怒張"
+                ]
+            },
+            {
+                "name": "血液分布異常性ショック - 敗血症性ショック",
+                "interview_points": [
+                    "発熱、悪寒戦慄、感染巣を示唆する症状"
+                ],
+                "physical_exam_points": [
+                    "発熱or低体温、頻脈、Warm shock(初期) or Cold shock(後期)"
+                ]
+            },
+            {
+                "name": "血液分布異常性ショック - アナフィラキシーショック",
+                "interview_points": [
+                    "原因物質への曝露歴、皮膚の掻痒感、喘鳴"
+                ],
+                "physical_exam_points": [
+                    "蕁麻疹、血管性浮腫、喘鳴、気道狭窄音"
+                ]
+            },
+            {
+                "name": "血液分布異常性ショック - 神経原性ショック",
+                "interview_points": [
+                    "頭部・脊髄損傷歴"
+                ],
+                "physical_exam_points": [
+                    "低血圧と徐脈の合併、温かく乾燥した皮膚、麻痺"
+                ]
+            },
+            {
+                "name": "心外閉塞・拘束性ショック - 緊張性気胸",
+                "interview_points": [
+                    "突然の胸痛、呼吸困難、外傷歴"
+                ],
+                "physical_exam_points": [
+                    "患側の呼吸音消失、気管偏位、皮下気腫、頸静脈怒張"
+                ]
+            },
+            {
+                "name": "心外閉塞・拘束性ショック - 心タンポナーデ",
+                "interview_points": [
+                    "心膜炎や悪性腫瘍の既往、胸痛"
+                ],
+                "physical_exam_points": [
+                    "Beckの三徴（低血圧、頸静脈怒張、心音減弱）、奇脈"
+                ]
+            },
+            {
+                "name": "心外閉塞・拘束性ショック - 肺血栓塞栓症",
+                "interview_points": [
+                    "突然の呼吸困難、胸痛、長期臥床歴"
+                ],
+                "physical_exam_points": [
+                    "頻呼吸、頻脈、II音の亢進、下肢の腫脹・圧痛(DVT所見)"
+                ]
+            }
+        ]
+    },
+    {
+        "symptom": "心停止",
+        "differential_diagnoses": [
+            {
+                "name": "Hypovolemia (循環血液量減少)",
+                "interview_points": [
+                    "明らかな出血、脱水、平坦な頸静脈"
+                ],
+                "physical_exam_points": [
+                    ""
+                ]
+            },
+            {
+                "name": "Hypoxia (低酸素症)",
+                "interview_points": [
+                    "チアノーゼ、気道閉塞、呼吸不全の先行"
+                ],
+                "physical_exam_points": [
+                    ""
+                ]
+            },
+            {
+                "name": "Hydrogen ion (アシドーシス)",
+                "interview_points": [
+                    "腎不全、糖尿病性ケトアシドーシス、中毒"
+                ],
+                "physical_exam_points": [
+                    ""
+                ]
+            },
+            {
+                "name": "Hypo-/Hyperkalemia (低/高カリウム血症)",
+                "interview_points": [
+                    "腎不全患者、特徴的な心電図変化（T波増高、QRS延長など）"
+                ],
+                "physical_exam_points": [
+                    ""
+                ]
+            },
+            {
+                "name": "Hypothermia (低体温症)",
+                "interview_points": [
+                    "偶発性低体温、冷たい身体"
+                ],
+                "physical_exam_points": [
+                    ""
+                ]
+            },
+            {
+                "name": "Tension pneumothorax (緊張性気胸)",
+                "interview_points": [
+                    "外傷、片側性の呼吸音消失、気管偏位、皮下気腫"
+                ],
+                "physical_exam_points": [
+                    ""
+                ]
+            },
+            {
+                "name": "Tamponade, cardiac (心タンポナーデ)",
+                "interview_points": [
+                    "心拡大の既往、頸静脈怒張、心音減弱"
+                ],
+                "physical_exam_points": [
+                    ""
+                ]
+            },
+            {
+                "name": "Toxins (中毒)",
+                "interview_points": [
+                    "薬物の過量摂取歴、瞳孔異常"
+                ],
+                "physical_exam_points": [
+                    ""
+                ]
+            },
+            {
+                "name": "Thrombosis, pulmonary (肺血栓塞栓症)",
+                "interview_points": [
+                    "突然の呼吸困難・チアノーゼ、頸静脈怒張、長期臥床歴"
+                ],
+                "physical_exam_points": [
+                    ""
+                ]
+            },
+            {
+                "name": "Thrombosis, coronary (冠動脈血栓症)",
+                "interview_points": [
+                    "先行する胸痛、心電図でのST変化"
+                ],
+                "physical_exam_points": [
+                    ""
+                ]
+            }
+        ]
+    },
+    {
+        "symptom": "意識障害",
+        "differential_diagnoses": [
+            {
+                "name": "A: Alcohol (アルコール)",
+                "interview_points": [
+                    "飲酒歴"
+                ],
+                "physical_exam_points": [
+                    "アルコール臭、小脳失調"
+                ]
+            },
+            {
+                "name": "I: Insulin (インスリン/低血糖・高血糖)",
+                "interview_points": [
+                    "糖尿病の既往、インスリン・経口薬の使用"
+                ],
+                "physical_exam_points": [
+                    "冷汗（低血糖）、アセトン臭・脱水（DKA）"
+                ]
+            },
+            {
+                "name": "U: Uremia (尿毒症)",
+                "interview_points": [
+                    "腎不全・透析の既往"
+                ],
+                "physical_exam_points": [
+                    "浮腫、貧血様顔貌、アムモニア臭"
+                ]
+            },
+            {
+                "name": "E: Encephalopathy (脳症: 肝性、高血圧性)",
+                "interview_points": [
+                    "肝硬変の既往、高度な高血圧"
+                ],
+                "physical_exam_points": [
+                    "黄疸、腹水、羽ばたき振戦、著明な高血圧"
+                ]
+            },
+            {
+                "name": "E: Electrolytes (電解質異常), Endocrine (内分泌)",
+                "interview_points": [
+                    "嘔吐・下痢、甲状腺・副腎疾患の既往"
+                ],
+                "physical_exam_points": [
+                    "脱水、甲状腺腫、色素沈着"
+                ]
+            },
+            {
+                "name": "O: Oxygen (低酸素), Opiates (オピオイド)",
+                "interview_points": [
+                    "呼吸器疾患の既往、薬剤使用歴"
+                ],
+                "physical_exam_points": [
+                    "チアノーゼ、呼吸抑制、縮瞳"
+                ]
+            },
+            {
+                "name": "T: Trauma (外傷), Temperature (体温異常)",
+                "interview_points": [
+                    "頭部外傷歴、環境曝露"
+                ],
+                "physical_exam_points": [
+                    "頭部の外傷所見、高体温または低体温"
+                ]
+            },
+            {
+                "name": "I: Infection (感染症: 敗血症、髄膜炎)",
+                "interview_points": [
+                    "発熱、感染巣を示唆する症状"
+                ],
+                "physical_exam_points": [
+                    "発熱、ショックバイタル、髄膜刺激徴候"
+                ]
+            },
+            {
+                "name": "P: Psychiatric (精神疾患), Poisoning (中毒)",
+                "interview_points": [
+                    "精神疾患の既往、薬物・毒物摂取の可能性"
+                ],
+                "physical_exam_points": [
+                    "身体所見と乖離、中毒に特徴的な症候群"
+                ]
+            },
+            {
+                "name": "S: Seizure (けいれん), Stroke (脳卒中)",
+                "interview_points": [
+                    "けいれんの目撃、突然発症の麻痺・失語"
+                ],
+                "physical_exam_points": [
+                    "舌咬傷、失禁、神経学的巣症状（麻痺、瞳孔不同）"
+                ]
+            }
+        ]
+    },
+    {
+        "symptom": "失神",
+        "differential_diagnoses": [
+            {
+                "name": "神経調節性失神（血管迷走神経性など）",
+                "interview_points": [
+                    "長時間の立位、疼痛、精神的ストレス、排尿・排便などの誘因"
+                ],
+                "physical_exam_points": [
+                    "前駆症状（悪心、冷汗、視野狭窄）、誘発試験で再現"
+                ]
+            },
+            {
+                "name": "起立性低血圧",
+                "interview_points": [
+                    "起立・体位変換時に発症、薬剤（降圧薬）の使用"
+                ],
+                "physical_exam_points": [
+                    "起立試験での血圧低下（収縮期20mmHg以上）"
+                ]
+            },
+            {
+                "name": "不整脈",
+                "interview_points": [
+                    "前駆症状なく突然発症、労作時、動悸、心疾患の既往"
+                ],
+                "physical_exam_points": [
+                    "徐脈、頻脈、不整脈、心雑音"
+                ]
+            },
+            {
+                "name": "器質的心疾患（大動脈弁狭窄症、肥大型心筋症）",
+                "interview_points": [
+                    "労作時失神、胸痛、呼吸困難"
+                ],
+                "physical_exam_points": [
+                    "収縮期駆出性雑音（AS）、聴診での体位による雑音変化（HOCM）"
+                ]
+            },
+            {
+                "name": "肺血栓塞栓症、大動脈解離",
+                "interview_points": [
+                    "突然の胸痛・呼吸困難"
+                ],
+                "physical_exam_points": [
+                    "頻脈、頻呼吸、血圧左右差、DVT所見"
+                ]
+            },
+            {
+                "name": "脳血管障害（まれ）",
+                "interview_points": [
+                    "失神以外の神経症状（めまい、複視、構音障害）を伴う"
+                ],
+                "physical_exam_points": [
+                    "神経学的巣症状"
+                ]
+            }
+        ]
+    },
+    {
+        "symptom": "けいれん",
+        "differential_diagnoses": [
+            {
+                "name": "てんかん",
+                "interview_points": [
+                    "てんかんの既往、抗てんかん薬の内服状況、発作の定型性、前兆の有無"
+                ],
+                "physical_exam_points": [
+                    "発作間欠期には特異的所見に乏しいことが多い"
+                ]
+            },
+            {
+                "name": "脳血管障害（脳卒中）",
+                "interview_points": [
+                    "突然発症の麻痺・感覚障害・失語、高齢、高血圧・糖尿病などの危険因子"
+                ],
+                "physical_exam_points": [
+                    "神経学的巣症状（片麻痺、瞳孔不同など）、意識障害"
+                ]
+            },
+            {
+                "name": "脳腫瘍",
+                "interview_points": [
+                    "亜急性に進行する頭痛、悪心・嘔吐、局所神経症状"
+                ],
+                "physical_exam_points": [
+                    "神経学的巣症状、うっ血乳頭"
+                ]
+            },
+            {
+                "name": "中枢神経感染症（脳炎・髄膜炎）",
+                "interview_points": [
+                    "発熱、頭痛、意識障害"
+                ],
+                "physical_exam_points": [
+                    "発熱、髄膜刺激徴候、意識障害"
+                ]
+            },
+            {
+                "name": "頭部外傷",
+                "interview_points": [
+                    "受傷機転、受傷直後の意識消失"
+                ],
+                "physical_exam_points": [
+                    "頭部の外傷所見（創、血腫）、神経学的巣症状"
+                ]
+            },
+            {
+                "name": "代謝異常（低血糖、低Na血症など）",
+                "interview_points": [
+                    "糖尿病（インスリン使用）、嘔吐・下痢、食事摂取不良"
+                ],
+                "physical_exam_points": [
+                    "意識障害、冷汗（低血糖）、脱水所見"
+                ]
+            },
+            {
+                "name": "アルコール関連けいれん",
+                "interview_points": [
+                    "アルコール多飲歴、離脱症状（振戦、発汗）"
+                ],
+                "physical_exam_points": [
+                    "アルコール臭、振戦、頻脈、高血圧"
+                ]
+            },
+            {
+                "name": "熱性けいれん（小児）",
+                "interview_points": [
+                    "生後6ヶ月～5歳の乳幼児、急な発熱に伴う発作"
+                ],
+                "physical_exam_points": [
+                    "発熱、感染巣の探索、神経学的異常がないこと"
+                ]
+            }
+        ]
+    },
+    {
+        "symptom": "めまい",
+        "differential_diagnoses": [
+            {
+                "name": "脳梗塞・脳出血（小脳・脳幹）",
+                "interview_points": [
+                    "突然発症、持続性、頭痛、構音障害、嚥下障害、麻痺・しびれ"
+                ],
+                "physical_exam_points": [
+                    "方向固定性のない眼振、小脳性運動失調、神経学的巣症状"
+                ]
+            },
+            {
+                "name": "高血圧性脳症",
+                "interview_points": [
+                    "著明な高血圧、頭痛、悪心・嘔吐、意識障害"
+                ],
+                "physical_exam_points": [
+                    "著明な高血圧、うっ血乳頭"
+                ]
+            },
+            {
+                "name": "良性発作性頭位めまい症(BPPV)",
+                "interview_points": [
+                    "頭位変換で誘発される短時間（1分以内）の回転性めまい"
+                ],
+                "physical_exam_points": [
+                    "Dix-Hall-Pike試験で誘発される潜時・疲労性のある眼振"
+                ]
+            },
+            {
+                "name": "前庭神経炎",
+                "interview_points": [
+                    "先行感染後、数日間持続する強い回転性めまい、難聴なし"
+                ],
+                "physical_exam_points": [
+                    "一方向性の水平回旋混合性眼振、頭位変換で増悪"
+                ]
+            },
+            {
+                "name": "Ménière病",
+                "interview_points": [
+                    "反復する回転性めまい発作（数時間）、難聴、耳鳴、耳閉感を伴う"
+                ],
+                "physical_exam_points": [
+                    "発作時に一方向性の眼振、感音難聴（Rinne/Weber試験）"
+                ]
+            },
+            {
+                "name": "起立性低血圧",
+                "interview_points": [
+                    "立ちくらみ感、体位変換で誘発"
+                ],
+                "physical_exam_points": [
+                    "起立試験での血圧低下"
+                ]
+            },
+            {
+                "name": "不整脈",
+                "interview_points": [
+                    "立ちくらみ感、動悸、失神"
+                ],
+                "physical_exam_points": [
+                    "不整脈、心雑音"
+                ]
+            },
+            {
+                "name": "貧血",
+                "interview_points": [
+                    "浮動感、労作時息切れ、倦怠感"
+                ],
+                "physical_exam_points": [
+                    "眼瞼結膜蒼白"
+                ]
+            },
+            {
+                "name": "パニック障害",
+                "interview_points": [
+                    "浮動感、不安、動悸、呼吸困難などを伴うパニック発作"
+                ],
+                "physical_exam_points": [
+                    "身体所見は正常、過換気症候群を呈することも"
+                ]
+            }
+        ]
+    },
+    {
+        "symptom": "脱水",
+        "differential_diagnoses": [
+            {
+                "name": "急性胃腸炎",
+                "interview_points": [
+                    "悪心・嘔吐、下痢、腹痛、発熱、食事歴"
+                ],
+                "physical_exam_points": [
+                    "腹部圧痛、腸蠕動音の亢進"
+                ]
+            },
+            {
+                "name": "熱中症",
+                "interview_points": [
+                    "高温環境での活動歴、発汗、頭痛、めまい"
+                ],
+                "physical_exam_points": [
+                    "高体温、頻脈、皮膚の乾燥または湿潤"
+                ]
+            },
+            {
+                "name": "糖尿病（ケトアシドーシス、高浸透圧高血糖症候群）",
+                "interview_points": [
+                    "口渇、多飲、多尿、体重減少、意識障害"
+                ],
+                "physical_exam_points": [
+                    "著明な脱水所見、Kussmaul大呼吸、アセトン臭"
+                ]
+            },
+            {
+                "name": "急性消化管出血",
+                "interview_points": [
+                    "吐血、下血（黒色便）、腹痛、めまい"
+                ],
+                "physical_exam_points": [
+                    "頻脈、低血圧、皮膚蒼白、腹部圧痛、直腸診での黒色便"
+                ]
+            },
+            {
+                "name": "急性膵炎",
+                "interview_points": [
+                    "持続する上腹部痛、背部への放散痛、悪心・嘔吐"
+                ],
+                "physical_exam_points": [
+                    "頻脈、低血圧、上腹部圧痛、腹膜刺激徴候"
+                ]
+            },
+            {
+                "name": "中枢性尿崩症",
+                "interview_points": [
+                    "突然発症の多尿、著しい口渇・多飲"
+                ],
+                "physical_exam_points": [
+                    "重度の脱水所見、神経学的所見"
+                ]
+            },
+            {
+                "name": "乳児下痢症",
+                "interview_points": [
+                    "下痢、嘔吐、哺乳不良、不機嫌"
+                ],
+                "physical_exam_points": [
+                    "大泉門の陥凹、眼球陥凹、啼泣時の涙なし、皮膚ツルゴール低下"
+                ]
+            }
+        ]
+    },
+    {
+        "symptom": "浮腫",
+        "differential_diagnoses": [
+            {
+                "name": "心不全",
+                "interview_points": [
+                    "労作時呼吸困難、起座呼吸、夜間発作性呼吸困難、体重増加"
+                ],
+                "physical_exam_points": [
+                    "頸静脈怒張、III音聴取、肺うっ血（湿性ラ音）、圧痕性浮腫"
+                ]
+            },
+            {
+                "name": "ネフローゼ症候群・腎不全",
+                "interview_points": [
+                    "尿の泡立ち、尿量減少、倦怠感"
+                ],
+                "physical_exam_points": [
+                    "眼瞼浮腫、全身性の圧痕性浮腫、高血圧、貧血様顔貌"
+                ]
+            },
+            {
+                "name": "肝硬変",
+                "interview_points": [
+                    "腹部膨満（腹水）、黄疸、アルコール多飲歴"
+                ],
+                "physical_exam_points": [
+                    "腹水、黄疸、くも状血管腫、手掌紅斑、脾腫"
+                ]
+            },
+            {
+                "name": "甲状腺機能低下症",
+                "interview_points": [
+                    "全身倦怠感、寒がり、体重増加、皮膚乾燥"
+                ],
+                "physical_exam_points": [
+                    "非圧痕性浮腫（粘液水腫）、徐脈、アキレス腱反射遅延"
+                ]
+            },
+            {
+                "name": "薬剤性浮腫",
+                "interview_points": [
+                    "降圧薬（Ca拮抗薬）、NSAIDsなどの使用歴"
+                ],
+                "physical_exam_points": [
+                    "下腿の圧痕性浮腫"
+                ]
+            },
+            {
+                "name": "深部静脈血栓症(DVT)",
+                "interview_points": [
+                    "片側性の下肢腫脹・疼痛、長期臥床・手術後"
+                ],
+                "physical_exam_points": [
+                    "患側下肢の腫脹、圧痛、熱感、Homans徴候（感度低い）"
+                ]
+            },
+            {
+                "name": "蜂窩織炎",
+                "interview_points": [
+                    "局所の発赤・熱感・疼痛、皮膚の創傷"
+                ],
+                "physical_exam_points": [
+                    "境界不明瞭な発赤、熱感、腫脹、圧痛"
+                ]
+            },
+            {
+                "name": "リンパ浮腫",
+                "interview_points": [
+                    "悪性腫瘍術後（リンパ節郭清）、放射線治療後"
+                ],
+                "physical_exam_points": [
+                    "非圧痕性浮腫、皮膚の肥厚・硬化"
+                ]
+            }
+        ]
+    },
+    {
+        "symptom": "発疹",
+        "differential_diagnoses": [
+            {
+                "name": "麻疹",
+                "interview_points": [
+                    "発熱、カタル症状（咳、鼻汁、結膜充血）、予防接種歴"
+                ],
+                "physical_exam_points": [
+                    "Koplik斑、全身に広がる融合性の紅斑丘疹、色素沈着"
+                ]
+            },
+            {
+                "name": "風疹",
+                "interview_points": [
+                    "発熱、リンパ節腫脹、予防接種歴"
+                ],
+                "physical_exam_points": [
+                    "耳介後部・頸部リンパ節腫脹、淡い紅色の小斑点状丘疹"
+                ]
+            },
+            {
+                "name": "水痘・帯状疱疹",
+                "interview_points": [
+                    "掻痒を伴う水疱、接触歴"
+                ],
+                "physical_exam_points": [
+                    "紅斑、丘疹、水疱、膿疱、痂皮が混在する「新旧混在」の皮疹"
+                ]
+            },
+            {
+                "name": "溶連菌感染症",
+                "interview_points": [
+                    "発熱、咽頭痛、先行する咽頭炎"
+                ],
+                "physical_exam_points": [
+                    "苺舌、口囲蒼白、点状の紅斑（サンドペーパー様）"
+                ]
+            },
+            {
+                "name": "伝染性単核球症",
+                "interview_points": [
+                    "発熱、咽頭痛、倦怠感、ペニシリン系抗菌薬の使用歴"
+                ],
+                "physical_exam_points": [
+                    "扁桃の白苔、頸部リンパ節腫脹、全身の麻疹様発疹"
+                ]
+            },
+            {
+                "name": "全身性エリテマトーデス(SLE)",
+                "interview_points": [
+                    "発熱、関節痛、光線過敏"
+                ],
+                "physical_exam_points": [
+                    "蝶形紅斑、円板状皮疹、口腔内潰瘍"
+                ]
+            },
+            {
+                "name": "川崎病（小児）",
+                "interview_points": [
+                    "5日以上続く発熱、両側眼球結膜充血、口唇・口腔所見"
+                ],
+                "physical_exam_points": [
+                    "主要6症状（発熱、結膜充血、口唇発赤、発疹、四肢末端変化、頸部リンパ節腫脹）"
+                ]
+            },
+            {
+                "name": "IgA血管炎",
+                "interview_points": [
+                    "先行感染、腹痛、関節痛、紫斑"
+                ],
+                "physical_exam_points": [
+                    "下腿・臀部中心の触知可能な紫斑"
+                ]
+            },
+            {
+                "name": "薬疹",
+                "interview_points": [
+                    "原因薬剤の開始時期（7-14日前）、掻痒"
+                ],
+                "physical_exam_points": [
+                    "多形性（麻疹様、中毒性表皮壊死症など）、粘膜疹"
+                ]
+            },
+            {
+                "name": "蕁麻疹",
+                "interview_points": [
+                    "突然出現し数時間で消退する膨疹、強い掻痒"
+                ],
+                "physical_exam_points": [
+                    "境界明瞭で一過性の膨疹"
+                ]
+            }
+        ]
+    },
+    {
+        "symptom": "咳・痰",
+        "differential_diagnoses": [
+            {
+                "name": "急性上気道炎・気管支炎",
+                "interview_points": [
+                    "急性発症、発熱、鼻汁、咽頭痛、周囲の流行状況"
+                ],
+                "physical_exam_points": [
+                    "咽頭発赤、coarse crackles（気管支炎）"
+                ]
+            },
+            {
+                "name": "肺炎",
+                "interview_points": [
+                    "発熱、悪寒、膿性痰、胸痛、呼吸困難"
+                ],
+                "physical_exam_points": [
+                    "患側の呼吸音減弱、fine crackles、気管支呼吸音"
+                ]
+            },
+            {
+                "name": "肺結核",
+                "interview_points": [
+                    "2週間以上続く咳、微熱、盗汗、体重減少、血痰"
+                ],
+                "physical_exam_points": [
+                    "特異的所見に乏しいことが多いが、上肺野のcoarse crackles"
+                ]
+            },
+            {
+                "name": "気管支喘息",
+                "interview_points": [
+                    "反復する発作性の咳・呼吸困難、夜間・早朝の増悪、喘鳴"
+                ],
+                "physical_exam_points": [
+                    "呼気性の喘鳴（wheezes）"
+                ]
+            },
+            {
+                "name": "慢性閉塞性肺疾患(COPD)",
+                "interview_points": [
+                    "長期の喫煙歴、労作時呼吸困難、慢性の咳・痰"
+                ],
+                "physical_exam_points": [
+                    "樽状胸、口すぼめ呼吸、呼吸音減弱、呼気延長"
+                ]
+            },
+            {
+                "name": "肺癌",
+                "interview_points": [
+                    "喫煙歴、持続する咳、血痰、体重減少、嗄声"
+                ],
+                "physical_exam_points": [
+                    "ばち指、局所的な呼吸音減弱やwheezes、リンパ節腫脹"
+                ]
+            },
+            {
+                "name": "胃食道逆流症(GERD)",
+                "interview_points": [
+                    "食後や臥位で増悪する咳、胸やけ、呑酸"
+                ],
+                "physical_exam_points": [
+                    "特異的な身体所見に乏しい"
+                ]
+            },
+            {
+                "name": "アレルギー性鼻炎・後鼻漏",
+                "interview_points": [
+                    "鼻汁、鼻閉、くしゃみ、咽頭への鼻汁の垂れ込み感"
+                ],
+                "physical_exam_points": [
+                    "鼻粘膜の腫脹・蒼白、咽頭後壁のcobblestone appearance"
+                ]
+            },
+            {
+                "name": "心不全",
+                "interview_points": [
+                    "労作時呼吸困難、起座呼吸、ピンク色泡沫状の痰"
+                ],
+                "physical_exam_points": [
+                    "頸静脈怒張、III音、両側肺底部のfine crackles"
+                ]
+            },
+            {
+                "name": "非結核性抗酸菌症",
+                "interview_points": [
+                    "中高年女性、慢性の湿性咳嗽、血痰、倦怠感"
+                ],
+                "physical_exam_points": [
+                    "特異的所見に乏しいことが多い"
+                ]
+            }
+        ]
+    },
+    {
+        "symptom": "血痰・喀血",
+        "differential_diagnoses": [
+            {
+                "name": "気管支拡張症",
+                "interview_points": [
+                    "慢性の膿性痰、繰り返す気道感染、幼少期の肺炎歴"
+                ],
+                "physical_exam_points": [
+                    "両側肺底部のcoarse crackles、ばち指"
+                ]
+            },
+            {
+                "name": "肺癌",
+                "interview_points": [
+                    "長期の喫煙歴、持続する咳、体重減少、胸痛、嗄声"
+                ],
+                "physical_exam_points": [
+                    "ばち指、局所的な呼吸音減弱やwheezes、頸部リンパ節腫脹"
+                ]
+            },
+            {
+                "name": "肺結核",
+                "interview_points": [
+                    "2週間以上続く咳、微熱、盗汗、体重減少、結核接触歴"
+                ],
+                "physical_exam_points": [
+                    "上肺野のcoarse crackles、るいそう"
+                ]
+            },
+            {
+                "name": "急性気管支炎・肺炎",
+                "interview_points": [
+                    "急性の咳、発熱、膿性痰"
+                ],
+                "physical_exam_points": [
+                    "発熱、coarse crackles、局所の呼吸音異常（肺炎）"
+                ]
+            },
+            {
+                "name": "心不全（特に僧帽弁狭窄症）",
+                "interview_points": [
+                    "労作時呼吸困難、起座呼吸、動悸、ピンク色泡沫状痰"
+                ],
+                "physical_exam_points": [
+                    "頸静脈怒張、僧帽弁開放音、拡張期ランブル、肺うっ血音"
+                ]
+            },
+            {
+                "name": "肺血栓塞栓症",
+                "interview_points": [
+                    "突然の胸痛・呼吸困難、長期臥床歴、手術後"
+                ],
+                "physical_exam_points": [
+                    "頻呼吸、頻脈、II音の亢進、下肢DVT所見"
+                ]
+            },
+            {
+                "name": "ANCA関連血管炎",
+                "interview_points": [
+                    "急速進行性糸球体腎炎、多発単神経炎、紫斑、副鼻腔炎"
+                ],
+                "physical_exam_points": [
+                    "鞍鼻、紫斑、多発単神経炎の所見、血尿"
+                ]
+            },
+            {
+                "name": "特発性肺ヘモジデローシス",
+                "interview_points": [
+                    "若年者、反復する喀血、鉄欠乏性貧血"
+                ],
+                "physical_exam_points": [
+                    "貧血様顔貌、肺野のcrackles"
+                ]
+            }
+        ]
+    },
+    {
+        "symptom": "呼吸困難",
+        "differential_diagnoses": [
+            {
+                "name": "肺血栓塞栓症",
+                "interview_points": [
+                    "突然の胸痛・呼吸困難、長期臥床・手術後、悪性腫瘍"
+                ],
+                "physical_exam_points": [
+                    "頻呼吸、頻脈、IIp音亢進、下肢DVT所見"
+                ]
+            },
+            {
+                "name": "自然気胸",
+                "interview_points": [
+                    "突然の片側胸痛・呼吸困難、若年長身男性"
+                ],
+                "physical_exam_points": [
+                    "患側の呼吸音減弱・消失、打診での鼓音、皮下気腫"
+                ]
+            },
+            {
+                "name": "アナフィラキシー",
+                "interview_points": [
+                    "アレルゲン曝露後の喘鳴、蕁麻疹、血圧低下"
+                ],
+                "physical_exam_points": [
+                    "喘鳴、喉頭浮腫、蕁麻疹、ショックバイタル"
+                ]
+            },
+            {
+                "name": "心不全（急性肺水腫）",
+                "interview_points": [
+                    "急速な呼吸困難、起座呼吸、ピンク色泡沫状痰、心疾患既往"
+                ],
+                "physical_exam_points": [
+                    "頻脈、III音、頸静脈怒張、両側肺野の湿性ラ音"
+                ]
+            },
+            {
+                "name": "気管支喘息発作",
+                "interview_points": [
+                    "喘鳴、夜間・早朝の増悪、アトピー素因、誘因の存在"
+                ],
+                "physical_exam_points": [
+                    "呼気性喘鳴、呼気延長、起座呼吸、奇脈"
+                ]
+            },
+            {
+                "name": "肺炎",
+                "interview_points": [
+                    "発熱、悪寒、膿性痰、胸痛"
+                ],
+                "physical_exam_points": [
+                    "発熱、頻呼吸、局所的な呼吸音減弱・coarse crackles"
+                ]
+            },
+            {
+                "name": "慢性閉塞性肺疾患(COPD)",
+                "interview_points": [
+                    "長期の喫煙歴、慢性の労作時呼吸困難、咳・痰"
+                ],
+                "physical_exam_points": [
+                    "樽状胸、口すぼめ呼吸、呼吸音減弱、呼気延長"
+                ]
+            },
+            {
+                "name": "間質性肺炎",
+                "interview_points": [
+                    "慢性の乾性咳嗽、進行性の労作時呼吸困難"
+                ],
+                "physical_exam_points": [
+                    "ばち指、両側肺底部のfine crackles (Velcroラ音)"
+                ]
+            },
+            {
+                "name": "肺癌",
+                "interview_points": [
+                    "喫煙歴、体重減少、血痰"
+                ],
+                "physical_exam_points": [
+                    "ばち指、局所的な呼吸音異常"
+                ]
+            },
+            {
+                "name": "貧血",
+                "interview_points": [
+                    "労作時の息切れ、動悸、倦怠感、蒼白"
+                ],
+                "physical_exam_points": [
+                    "眼瞼結膜蒼白、頻脈"
+                ]
+            },
+            {
+                "name": "不安障害（過換気症候群）",
+                "interview_points": [
+                    "状況的な呼吸困難、不安感、口唇・手指のしびれ"
+                ],
+                "physical_exam_points": [
+                    "頻呼吸、身体所見は正常、Trousseau徴候"
+                ]
+            }
+        ]
+    },
+    {
+        "symptom": "胸痛",
+        "differential_diagnoses": [
+            {
+                "name": "急性冠症候群(ACS)",
+                "interview_points": [
+                    "突然発症の締め付けられるような痛み、左肩・顎への放散、冷汗、20分以上持続"
+                ],
+                "physical_exam_points": [
+                    "頻脈or徐脈、III音・IV音、心雑音、肺うっ血音、ショック徴候"
+                ]
+            },
+            {
+                "name": "急性大動脈解離",
+                "interview_points": [
+                    "突然発症の引き裂かれるような激痛、背部への移動、高血圧の既往"
+                ],
+                "physical_exam_points": [
+                    "血圧・脈拍の左右差、大動脈弁逆流性雑音、神経学的異常"
+                ]
+            },
+            {
+                "name": "肺血栓塞栓症(PTE)",
+                "interview_points": [
+                    "突然発症の呼吸困難を伴う胸痛（胸膜痛）、長期臥床・手術後"
+                ],
+                "physical_exam_points": [
+                    "頻呼吸、頻脈、IIp音亢進、頸静脈怒張、下肢DVT所見"
+                ]
+            },
+            {
+                "name": "緊張性気胸",
+                "interview_points": [
+                    "突然発症の片側性胸痛・呼吸困難"
+                ],
+                "physical_exam_points": [
+                    "患側呼吸音消失、打診で鼓音、気管偏位、皮下気腫"
+                ]
+            },
+            {
+                "name": "食道破裂",
+                "interview_points": [
+                    "激しい嘔吐後の突然の胸痛・背部痛"
+                ],
+                "physical_exam_points": [
+                    "ショック徴候、皮下気腫（頸部・前胸部）"
+                ]
+            },
+            {
+                "name": "安定狭心症",
+                "interview_points": [
+                    "労作や興奮で誘発される数分間の締め付け感、ニトログリセリンで寛解"
+                ],
+                "physical_exam_points": [
+                    "発作時以外は所見に乏しい"
+                ]
+            },
+            {
+                "name": "心膜炎",
+                "interview_points": [
+                    "先行感染、鋭い痛み、前屈位で軽減し臥位で増悪"
+                ],
+                "physical_exam_points": [
+                    "心膜摩擦音、心電図での広範なST上昇"
+                ]
+            },
+            {
+                "name": "胃食道逆流症(GERD)",
+                "interview_points": [
+                    "食後・臥位での胸やけ、呑酸"
+                ],
+                "physical_exam_points": [
+                    "特異的所見なし、心窩部圧痛を認めることも"
+                ]
+            },
+            {
+                "name": "肋骨骨折・肋軟骨炎",
+                "interview_points": [
+                    "体動・深呼吸・咳で増悪する限局性の痛み、外傷歴"
+                ],
+                "physical_exam_points": [
+                    "限局した圧痛、骨折部での軋轢音"
+                ]
+            },
+            {
+                "name": "帯状疱疹",
+                "interview_points": [
+                    "片側性、デルマトームに沿った灼熱痛、皮疹出現に先行"
+                ],
+                "physical_exam_points": [
+                    "デルマトームに一致した水疱、知覚過敏"
+                ]
+            },
+            {
+                "name": "不安障害",
+                "interview_points": [
+                    "状況的な胸痛、動悸、息苦しさ、しびれ感"
+                ],
+                "physical_exam_points": [
+                    "頻呼吸、身体所見は正常"
+                ]
+            }
+        ]
+    },
+    {
+        "symptom": "動悸",
+        "differential_diagnoses": [
+            {
+                "name": "期外収縮",
+                "interview_points": [
+                    "「脈が飛ぶ」「一瞬つまる感じ」"
+                ],
+                "physical_exam_points": [
+                    "脈の結滞"
+                ]
+            },
+            {
+                "name": "発作性上室性頻拍(PSVT)",
+                "interview_points": [
+                    "突然始まり突然止まる、規則正しい速い脈"
+                ],
+                "physical_exam_points": [
+                    "発作時の頻脈（150-250/分）、頸部静脈の蛙頸徴候"
+                ]
+            },
+            {
+                "name": "心房細動(AF)",
+                "interview_points": [
+                    "不規則で速い脈、高齢、高血圧・心疾患の既往"
+                ],
+                "physical_exam_points": [
+                    "絶対的不整脈（脈拍不整、強弱不同）、心音の強弱不同"
+                ]
+            },
+            {
+                "name": "心室頻拍(VT)・心室細動(VF)",
+                "interview_points": [
+                    "失神、めまい、胸痛を伴う、心疾患の既往"
+                ],
+                "physical_exam_points": [
+                    "ショックバイタル、意識障害"
+                ]
+            },
+            {
+                "name": "心不全",
+                "interview_points": [
+                    "労作時の息切れ、呼吸困難、浮腫"
+                ],
+                "physical_exam_points": [
+                    "頻脈、頸静脈怒張、III音、肺うっ血、下腿浮腫"
+                ]
+            },
+            {
+                "name": "甲状腺機能亢進症",
+                "interview_points": [
+                    "体重減少、発汗、手指振戦、暑がり"
+                ],
+                "physical_exam_points": [
+                    "頻脈、甲状腺腫、眼球突出、手指振戦"
+                ]
+            },
+            {
+                "name": "貧血",
+                "interview_points": [
+                    "労作時の息切れ、倦怠感、めまい"
+                ],
+                "physical_exam_points": [
+                    "頻脈、眼瞼結膜蒼白"
+                ]
+            },
+            {
+                "name": "低血糖",
+                "interview_points": [
+                    "冷汗、手指振戦、空腹感、糖尿病治療歴"
+                ],
+                "physical_exam_points": [
+                    "頻脈、発汗、振戦"
+                ]
+            },
+            {
+                "name": "発熱",
+                "interview_points": [
+                    "発熱、感染症状"
+                ],
+                "physical_exam_points": [
+                    "頻脈、発熱"
+                ]
+            },
+            {
+                "name": "薬剤性（交感神経刺激薬など）",
+                "interview_points": [
+                    "カフェイン、気管支拡張薬などの使用歴"
+                ],
+                "physical_exam_points": [
+                    "頻脈"
+                ]
+            },
+            {
+                "name": "不安障害（パニック障害）",
+                "interview_points": [
+                    "強い不安や恐怖を伴う発作、呼吸困難、めまい、しびれ"
+                ],
+                "physical_exam_points": [
+                    "頻脈、身体所見は正常、過換気徴候"
+                ]
+            }
+        ]
+    },
+    {
+        "symptom": "胸水",
+        "differential_diagnoses": [
+            {
+                "name": "心不全",
+                "interview_points": [
+                    "労作時呼吸困難、起座呼吸、下腿浮腫、心疾患の既往"
+                ],
+                "physical_exam_points": [
+                    "頸静脈怒張、III音、肺うっ血、下腿浮腫（胸水は右側優位が多い）"
+                ]
+            },
+            {
+                "name": "肝硬変",
+                "interview_points": [
+                    "腹部膨満（腹水）、黄疸、アルコール多飲歴"
+                ],
+                "physical_exam_points": [
+                    "腹水、黄疸、くも状血管腫、脾腫（胸水は右側が多い）"
+                ]
+            },
+            {
+                "name": "ネフローゼ症候群",
+                "interview_points": [
+                    "全身の浮腫、尿の泡立ち"
+                ],
+                "physical_exam_points": [
+                    "全身性の浮腫（特に眼瞼）、通常両側性の胸水"
+                ]
+            },
+            {
+                "name": "肺炎随伴性胸水・膿胸",
+                "interview_points": [
+                    "発熱、悪寒、膿性痰、胸痛（胸膜痛）"
+                ],
+                "physical_exam_points": [
+                    "発熱、頻脈、胸水貯留側の呼吸音減弱・濁音"
+                ]
+            },
+            {
+                "name": "癌性胸膜炎（肺癌など）",
+                "interview_points": [
+                    "進行性の呼吸困難、体重減少、喫煙歴"
+                ],
+                "physical_exam_points": [
+                    "ばち指、頸部リンパ節腫脹、胸水貯留側の呼吸音減弱・濁音"
+                ]
+            },
+            {
+                "name": "結核性胸膜炎",
+                "interview_points": [
+                    "発熱、乾性咳嗽、胸痛、倦怠感"
+                ],
+                "physical_exam_points": [
+                    "発熱、胸水貯留側の呼吸音減弱・濁音"
+                ]
+            },
+            {
+                "name": "関節リウマチ",
+                "interview_points": [
+                    "関節痛・こわばり、関節リウマチの既往"
+                ],
+                "physical_exam_points": [
+                    "多関節の腫脹・圧痛、リウマトイド結節"
+                ]
+            },
+            {
+                "name": "肺血栓塞栓症",
+                "interview_points": [
+                    "突然の胸痛・呼吸困難"
+                ],
+                "physical_exam_points": [
+                    "頻呼吸、頻脈、IIp音亢進"
+                ]
+            }
+        ]
+    },
+    {
+        "symptom": "嚥下困難・障害",
+        "differential_diagnoses": [
+            {
+                "name": "脳血管障害",
+                "interview_points": [
+                    "突然発症、麻痺、構音障害、呂律が回らない"
+                ],
+                "physical_exam_points": [
+                    "片麻痺、顔面神経麻痺、構音障害、軟口蓋挙上不全"
+                ]
+            },
+            {
+                "name": "神経筋疾患（重症筋無力症、筋萎縮性側索硬化症など）",
+                "interview_points": [
+                    "日内変動・易疲労性（MG）、筋萎縮・線維束性収縮（ALS）"
+                ],
+                "physical_exam_points": [
+                    "眼瞼下垂、複視、球麻痺症状（舌萎縮、線維束性収縮）"
+                ]
+            },
+            {
+                "name": "扁桃炎・咽頭膿瘍",
+                "interview_points": [
+                    "発熱、強い咽頭痛、開口障害"
+                ],
+                "physical_exam_points": [
+                    "扁桃の発赤・腫大・白苔、口蓋垂の偏位"
+                ]
+            },
+            {
+                "name": "食道癌",
+                "interview_points": [
+                    "進行性の嚥下困難（固形物から）、体重減少、胸痛"
+                ],
+                "physical_exam_points": [
+                    "頸部リンパ節腫脹、るいそう"
+                ]
+            },
+            {
+                "name": "胃食道逆流症(GERD)・逆流性食道炎",
+                "interview_points": [
+                    "胸やけ、呑酸、胸痛"
+                ],
+                "physical_exam_points": [
+                    "特異的所見なし"
+                ]
+            },
+            {
+                "name": "食道アカラシア",
+                "interview_points": [
+                    "固形物・液体ともに通過障害、嘔吐、胸痛"
+                ],
+                "physical_exam_points": [
+                    "特異的所見なし"
+                ]
+            },
+            {
+                "name": "食道カンジダ症",
+                "interview_points": [
+                    "嚥下時痛、免疫不全状態（HIV、ステロイド使用）"
+                ],
+                "physical_exam_points": [
+                    "口腔・咽頭のカンジda白苔"
+                ]
+            },
+            {
+                "name": "外部からの圧迫（甲状腺腫、大動脈瘤、肺癌など）",
+                "interview_points": [
+                    "それぞれの原疾患に応じた症状"
+                ],
+                "physical_exam_points": [
+                    "甲状腺腫、血管雑音、呼吸音異常など"
+                ]
+            }
+        ]
+    },
+    {
+        "symptom": "腹痛",
+        "differential_diagnoses": [
+            {
+                "name": "消化性潰瘍、急性胃炎",
+                "interview_points": [
+                    "食事との関連（空腹時痛、食後痛）、NSAIDs・ステロイド使用歴"
+                ],
+                "physical_exam_points": [
+                    "心窩部圧痛"
+                ]
+            },
+            {
+                "name": "急性膵炎",
+                "interview_points": [
+                    "アルコール多飲歴、胆石既往、持続する激痛、背部放散痛"
+                ],
+                "physical_exam_points": [
+                    "心窩部圧痛、(重症例で)腹膜刺激徴候"
+                ]
+            },
+            {
+                "name": "急性心筋梗塞（下壁）",
+                "interview_points": [
+                    "締め付けられる痛み、放散痛、冷汗、糖尿病・高血圧の既往"
+                ],
+                "physical_exam_points": [
+                    "ショック徴候、心音異常"
+                ]
+            },
+            {
+                "name": "胆石症・急性胆嚢炎・胆管炎",
+                "interview_points": [
+                    "脂肪食後の増悪、発熱、悪寒、黄疸、右肩への放散痛"
+                ],
+                "physical_exam_points": [
+                    "右上腹部圧痛、Murphy徴候、発熱、黄疸"
+                ]
+            },
+            {
+                "name": "急性虫垂炎",
+                "interview_points": [
+                    "初期の心窩部痛から右下腹部への移動、悪心・嘔吐、微熱"
+                ],
+                "physical_exam_points": [
+                    "McBurney点の圧痛、Rovsing徴候、筋性防御、反跳痛"
+                ]
+            },
+            {
+                "name": "婦人科疾患（卵巣茎捻転、異所性妊娠）",
+                "interview_points": [
+                    "女性、突然発症、月経歴、性器出血"
+                ],
+                "physical_exam_points": [
+                    "右下腹部圧痛、(内診で)付属器の腫大・圧痛"
+                ]
+            },
+            {
+                "name": "大腸憩室炎",
+                "interview_points": [
+                    "高齢者、持続痛、発熱、便秘・下痢"
+                ],
+                "physical_exam_points": [
+                    "左下腹部圧痛、腫瘤触知、腹膜刺激徴候"
+                ]
+            },
+            {
+                "name": "尿路結石",
+                "interview_points": [
+                    "突然発症の間欠的な激痛、血尿、嘔吐"
+                ],
+                "physical_exam_points": [
+                    "CVA叩打痛、腹部は軟"
+                ]
+            },
+            {
+                "name": "腸閉塞・イレウス",
+                "interview_points": [
+                    "腹部手術歴、間欠的な疝痛、嘔吐、腹部膨満、排便・排ガス停止"
+                ],
+                "physical_exam_points": [
+                    "腹部膨満、金属様の腸蠕動音、手術瘢痕"
+                ]
+            },
+            {
+                "name": "腹膜炎（潰瘍穿孔など）",
+                "interview_points": [
+                    "突然発症の持続する激痛、板状硬"
+                ],
+                "physical_exam_points": [
+                    "腹膜刺激徴候（筋性防御、反跳痛）、腸蠕動音消失"
+                ]
+            },
+            {
+                "name": "急性大動脈解離",
+                "interview_points": [
+                    "突然発症の引き裂かれるような痛み、背部・腰部への移動"
+                ],
+                "physical_exam_points": [
+                    "ショック徴候、血圧左右差、腹部血管雑音"
+                ]
+            }
+        ]
+    },
+    {
+        "symptom": "悪心・嘔吐",
+        "differential_diagnoses": [
+            {
+                "name": "急性心筋梗塞",
+                "interview_points": [
+                    "症状の経過、胸痛、発汗"
+                ],
+                "physical_exam_points": [
+                    "バイタルサイン、心音・心雑音"
+                ]
+            },
+            {
+                "name": "くも膜下出血・脳出血",
+                "interview_points": [
+                    "突然の激しい頭痛、症状の経過"
+                ],
+                "physical_exam_points": [
+                    "意識レベル、バイタルサイン、髄膜刺激徴候、神経系の診察"
+                ]
+            },
+            {
+                "name": "片頭痛",
+                "interview_points": [
+                    "反復性の拍動性頭痛、随伴症状（光・音過敏）"
+                ],
+                "physical_exam_points": [
+                    "神経学的診察（通常は異常なし）"
+                ]
+            },
+            {
+                "name": "腸閉塞・腸重積",
+                "interview_points": [
+                    "腹痛（間欠的な疝痛）、便の性状（排便・排ガス停止）、不機嫌（小児）,腹部の診察（膨満、金属音、圧痛）"
+                ],
+                "physical_exam_points": []
+            },
+            {
+                "name": "妊娠",
+                "interview_points": [
+                    "月経の遅れ、性器出血の有無"
+                ],
+                "physical_exam_points": [
+                    "腹部の診察"
+                ]
+            },
+            {
+                "name": "うつ病",
+                "interview_points": [
+                    "抑うつ気分、食思不振、体重の変化"
+                ],
+                "physical_exam_points": [
+                    "全身の外観、精神状態の評価"
+                ]
+            },
+            {
+                "name": "Ménière病",
+                "interview_points": [
+                    "反復する回転性めまい、難聴、耳鳴"
+                ],
+                "physical_exam_points": [
+                    "眼振、神経系の診察"
+                ]
+            },
+            {
+                "name": "急性胃腸炎・食中毒",
+                "interview_points": [
+                    "下痢、腹痛、発熱、食事歴、生活習慣"
+                ],
+                "physical_exam_points": [
+                    "腹部の診察（圧痛、腸蠕動音亢進）"
+                ]
+            },
+            {
+                "name": "胆管炎・急性膵炎",
+                "interview_points": [
+                    "上腹部痛、背部放散痛、発熱"
+                ],
+                "physical_exam_points": [
+                    "バイタルサイン、腹部の診察、背部の叩打痛"
+                ]
+            },
+            {
+                "name": "消化性潰瘍・胃癌",
+                "interview_points": [
+                    "心窩部痛、体重の変化、既往歴"
+                ],
+                "physical_exam_points": [
+                    "腹部の診察（心窩部圧痛）"
+                ]
+            },
+            {
+                "name": "糖尿病ケトアシドーシス",
+                "interview_points": [
+                    "口渇、多飲、多尿、体重減少"
+                ],
+                "physical_exam_points": [
+                    "意識レベル、バイタルサイン（頻呼吸）、呼気アセトン臭"
+                ]
+            },
+            {
+                "name": "薬物中毒",
+                "interview_points": [
+                    "常用薬、乱用薬物の可能性"
+                ],
+                "physical_exam_points": [
+                    "意識レベル、瞳孔所見、バイタルサイン"
+                ]
+            },
+            {
+                "name": "機能性ディスペプシア",
+                "interview_points": [
+                    "食後のもたれ、早期飽満感、器質的疾患の除外"
+                ],
+                "physical_exam_points": [
+                    "特異的所見に乏しい"
+                ]
+            }
+        ]
+    },
+    {
+        "symptom": "吐血",
+        "differential_diagnoses": [
+            {
+                "name": "胃癌・食道癌",
+                "interview_points": [
+                    "進行性の嚥下困難・障害、体重減少"
+                ],
+                "physical_exam_points": [
+                    "リンパ節腫脹（特に左鎖骨上窩）、貧血様顔貌"
+                ]
+            },
+            {
+                "name": "消化性潰瘍",
+                "interview_points": [
+                    "心窩部痛、NSAIDs・ピロリ菌感染の既往"
+                ],
+                "physical_exam_points": [
+                    "心窩部圧痛、貧血様顔貌"
+                ]
+            },
+            {
+                "name": "食道静脈瘤",
+                "interview_points": [
+                    "アルコール多飲歴、肝硬変の既往"
+                ],
+                "physical_exam_points": [
+                    "黄疸、腹水、くも状血管腫など肝硬変の徴候"
+                ]
+            }
+        ]
+    },
+    {
+        "symptom": "下血",
+        "differential_diagnoses": [
+            {
+                "name": "消化性潰瘍",
+                "interview_points": [
+                    "黒色便、心窩部痛、NSAIDs使用歴"
+                ],
+                "physical_exam_points": [
+                    "心窩部圧痛、貧血様顔貌、直腸診での黒色便"
+                ]
+            },
+            {
+                "name": "大腸癌",
+                "interview_points": [
+                    "便通異常（便秘・下痢の交代）、便柱狭小化、体重減少"
+                ],
+                "physical_exam_points": [
+                    "腹部腫瘤、貧血様顔貌、直腸診での腫瘤触知"
+                ]
+            },
+            {
+                "name": "食道静脈瘤",
+                "interview_points": [
+                    "黒色便、アルコール多飲歴、肝硬変の既往"
+                ],
+                "physical_exam_points": [
+                    "黄疸、腹水など肝硬変の徴候"
+                ]
+            },
+            {
+                "name": "炎症性腸疾患",
+                "interview_points": [
+                    "慢性の下痢、腹痛、発熱、血便"
+                ],
+                "physical_exam_points": [
+                    "腹部圧痛、肛門周囲病変"
+                ]
+            },
+            {
+                "name": "腸重積（小児）",
+                "interview_points": [
+                    "間欠的な啼泣（不機嫌）、嘔吐、イチゴゼリー状血便"
+                ],
+                "physical_exam_points": [
+                    "腹部腫瘤（ソーセージ様）、不機嫌"
+                ]
+            }
+        ]
+    },
+    {
+        "symptom": "下痢",
+        "differential_diagnoses": [
+            {
+                "name": "甲状腺機能亢進症",
+                "interview_points": [
+                    "体重減少、動悸、発汗"
+                ],
+                "physical_exam_points": [
+                    "頻脈、甲状腺腫、眼球突出、手指振戦"
+                ]
+            },
+            {
+                "name": "急性胃腸炎",
+                "interview_points": [
+                    "急性発症、腹痛、嘔気・嘔吐、発熱、食事・海外渡航歴"
+                ],
+                "physical_exam_points": [
+                    "腹部圧痛、腸蠕動音亢進、脱水所見"
+                ]
+            },
+            {
+                "name": "炎症性腸疾患",
+                "interview_points": [
+                    "慢性の血性下痢、腹痛、体重減少、発熱"
+                ],
+                "physical_exam_points": [
+                    "腹部圧痛、貧血様顔貌、肛門周囲病変"
+                ]
+            },
+            {
+                "name": "過敏性腸症候群",
+                "interview_points": [
+                    "腹痛を伴い、排便により軽快する慢性の下痢・便秘"
+                ],
+                "physical_exam_points": [
+                    "特異的な身体所見に乏しい"
+                ]
+            },
+            {
+                "name": "慢性膵炎",
+                "interview_points": [
+                    "脂肪便、腹痛、アルコール多飲歴"
+                ],
+                "physical_exam_points": [
+                    "心窩部圧痛、るいそう"
+                ]
+            }
+        ]
+    },
+    {
+        "symptom": "便秘",
+        "differential_diagnoses": [
+            {
+                "name": "大腸癌",
+                "interview_points": [
+                    "最近の便通異常、血便、体重減少、食思不振"
+                ],
+                "physical_exam_points": [
+                    "腹部腫瘤、貧血様顔貌、直腸診での腫瘤触知"
+                ]
+            },
+            {
+                "name": "腸閉塞",
+                "interview_points": [
+                    "腹痛、悪心・嘔吐、腹部膨満、腹部手術歴"
+                ],
+                "physical_exam_points": [
+                    "腹部膨満、金属様の腸蠕動音、手術瘢痕"
+                ]
+            },
+            {
+                "name": "甲状腺機能低下症",
+                "interview_points": [
+                    "全身倦怠感、体重増加、皮膚乾燥"
+                ],
+                "physical_exam_points": [
+                    "徐脈、甲状腺腫、下腿浮腫、アキレス腱反射遅延"
+                ]
+            },
+            {
+                "name": "過敏性腸症候群",
+                "interview_points": [
+                    "腹痛を伴い、排便により軽快する慢性の便秘・下痢"
+                ],
+                "physical_exam_points": [
+                    "特異的な身体所見に乏しい"
+                ]
+            }
+        ]
+    },
+    {
+        "symptom": "黄疸",
+        "differential_diagnoses": [
+            {
+                "name": "胆管炎",
+                "interview_points": [
+                    "発熱（悪寒戦慄）、右上腹部痛（Charcotの三徴）"
+                ],
+                "physical_exam_points": [
+                    "発熱、右上腹部圧痛、黄疸"
+                ]
+            },
+            {
+                "name": "急性・慢性肝炎",
+                "interview_points": [
+                    "全身倦怠感、食思不振、ウイルス感染リスク（輸血、性交渉など）"
+                ],
+                "physical_exam_points": [
+                    "肝腫大、圧痛、慢性肝疾患の徴候"
+                ]
+            },
+            {
+                "name": "非代償性肝硬変",
+                "interview_points": [
+                    "腹部膨満（腹水）、下腿浮腫、意識障害、アルコール多飲歴"
+                ],
+                "physical_exam_points": [
+                    "腹水、下腿浮腫、くも状血管腫、手掌紅斑、女性化乳房"
+                ]
+            },
+            {
+                "name": "膵癌（膵頭部）",
+                "interview_points": [
+                    "無痛性の進行性黄疸、体重減少、背部痛"
+                ],
+                "physical_exam_points": [
+                    "Courvoisier徴候（無痛性の胆嚢腫大）、るいそう"
+                ]
+            },
+            {
+                "name": "溶血性貧血",
+                "interview_points": [
+                    "貧血症状（息切れ、動悸）、家族歴"
+                ],
+                "physical_exam_points": [
+                    "貧血様顔貌（蒼白）、脾腫"
+                ]
+            }
+        ]
+    },
+    {
+        "symptom": "腹部膨隆・腫瘤",
+        "differential_diagnoses": [
+            {
+                "name": "腸閉塞",
+                "interview_points": [
+                    "悪心・嘔吐、腹痛（疝痛）、排便・排ガス停止、腹部手術歴"
+                ],
+                "physical_exam_points": [
+                    "腹部膨満（鼓音）、金属様の腸蠕動音、手術瘢痕"
+                ]
+            },
+            {
+                "name": "大腸癌",
+                "interview_points": [
+                    "便通異常、血便、体重減少"
+                ],
+                "physical_exam_points": [
+                    "腹部腫瘤、貧血様顔貌、直腸診"
+                ]
+            },
+            {
+                "name": "肝硬変",
+                "interview_points": [
+                    "アルコール多飲歴、ウイルス性肝炎既往、黄疸、下腿浮腫"
+                ],
+                "physical_exam_points": [
+                    "腹水（濁音界移動、波動）、くも状血管腫、脾腫"
+                ]
+            },
+            {
+                "name": "ネフローゼ症候群",
+                "interview_points": [
+                    "全身の浮腫、尿の泡立ち"
+                ],
+                "physical_exam_points": [
+                    "全身性浮腫（特に眼瞼）、腹水"
+                ]
+            },
+            {
+                "name": "心不全",
+                "interview_points": [
+                    "呼吸困難、起座呼吸、下腿浮腫"
+                ],
+                "physical_exam_points": [
+                    "頸静脈怒張、III音、肺うっ血、腹水、下腿浮腫"
+                ]
+            },
+            {
+                "name": "肝癌",
+                "interview_points": [
+                    "肝硬変の既往、右上腹部痛、体重減少"
+                ],
+                "physical_exam_points": [
+                    "硬く不整な肝腫大、腹水"
+                ]
+            },
+            {
+                "name": "卵巣嚢腫・癌",
+                "interview_points": [
+                    "下腹部膨満感、月経異常"
+                ],
+                "physical_exam_points": [
+                    "下腹部腫瘤（弾性軟〜硬）、（内診で）付属器腫瘤"
+                ]
+            },
+            {
+                "name": "妊娠",
+                "interview_points": [
+                    "月経の遅延、つわり"
+                ],
+                "physical_exam_points": [
+                    "子宮底長の増大、胎動、胎児心音"
+                ]
+            },
+            {
+                "name": "尿閉",
+                "interview_points": [
+                    "下腹部痛、尿意切迫、排尿困難"
+                ],
+                "physical_exam_points": [
+                    "恥骨上部の膨隆・濁音、圧痛"
+                ]
+            },
+            {
+                "name": "子宮筋腫",
+                "interview_points": [
+                    "過多月経、月経困難症"
+                ],
+                "physical_exam_points": [
+                    "下腹部腫瘤（硬く不整）、（内診で）子宮の腫大"
+                ]
+            },
+            {
+                "name": "鼠径ヘルニア",
+                "interview_points": [
+                    "鼠径部の膨隆（立位や腹圧で増強）、疼痛"
+                ],
+                "physical_exam_points": [
+                    "鼠径部の膨隆、還納性の有無"
+                ]
+            }
+        ]
+    },
+    {
+        "symptom": "貧血",
+        "differential_diagnoses": [
+            {
+                "name": "鉄欠乏性貧血（消化管出血、過多月経）",
+                "interview_points": [
+                    "吐血・下血（黒色便）、月経の状況、食事内容"
+                ],
+                "physical_exam_points": [
+                    "眼瞼結膜蒼白、スプーン状爪、舌乳頭萎縮、口角炎"
+                ]
+            },
+            {
+                "name": "肝硬変",
+                "interview_points": [
+                    "アルコール多飲歴、食道静脈瘤からの出血リスク"
+                ],
+                "physical_exam_points": [
+                    "黄疸、腹水、くも状血管腫など肝硬変の徴候"
+                ]
+            },
+            {
+                "name": "慢性腎臓病",
+                "interview_points": [
+                    "腎不全の既往、透析歴"
+                ],
+                "physical_exam_points": [
+                    "浮腫、高血圧、特有の顔貌"
+                ]
+            },
+            {
+                "name": "痔核",
+                "interview_points": [
+                    "排便時の出血（鮮血）"
+                ],
+                "physical_exam_points": [
+                    "直腸診での痔核の確認"
+                ]
+            },
+            {
+                "name": "消化性潰瘍・大腸癌",
+                "interview_points": [
+                    "心窩部痛、便通異常、体重減少"
+                ],
+                "physical_exam_points": [
+                    "腹部圧痛・腫瘤、直腸診"
+                ]
+            },
+            {
+                "name": "子宮筋腫",
+                "interview_points": [
+                    "過多月経、月経困難症"
+                ],
+                "physical_exam_points": [
+                    "腹部腫瘤、（内診で）子宮腫大"
+                ]
+            },
+            {
+                "name": "白血病・骨髄腫",
+                "interview_points": [
+                    "出血傾向（紫斑、鼻出血）、発熱、骨痛（腰痛）"
+                ],
+                "physical_exam_points": [
+                    "点状出血・紫斑、リンパ節腫脹、肝脾腫、胸骨圧痛"
+                ]
+            },
+            {
+                "name": "アルコール依存症",
+                "interview_points": [
+                    "アルコール多飲歴、食事摂取不良"
+                ],
+                "physical_exam_points": [
+                    "肝硬変の徴候、神経系の異常"
+                ]
+            }
+        ]
+    },
+    {
+        "symptom": "リンパ節腫脹",
+        "differential_diagnoses": [
+            {
+                "name": "悪性リンパ腫",
+                "interview_points": [
+                    "無痛性のリンパ節腫脹、発熱、体重減少、盗汗（B症状）"
+                ],
+                "physical_exam_points": [
+                    "弾性硬で可動性の乏しいリンパ節、肝脾腫"
+                ]
+            },
+            {
+                "name": "伝染性単核球症",
+                "interview_points": [
+                    "発熱、強い咽頭痛、全身倦怠感、若年者"
+                ],
+                "physical_exam_points": [
+                    "頸部リンパ節腫脹（特に後頸部）、扁桃の白苔、肝脾腫、発疹"
+                ]
+            },
+            {
+                "name": "上気道炎",
+                "interview_points": [
+                    "咽頭痛、咳、鼻汁"
+                ],
+                "physical_exam_points": [
+                    "有痛性の頸部リンパ節腫脹、咽頭発赤"
+                ]
+            },
+            {
+                "name": "ウイルス性発疹症（麻疹・風疹）",
+                "interview_points": [
+                    "発熱、特徴的な発疹"
+                ],
+                "physical_exam_points": [
+                    "耳介後部・後頭部リンパ節腫脹（風疹）、全身の発疹"
+                ]
+            },
+            {
+                "name": "結核（結核性リンパ節炎）",
+                "interview_points": [
+                    "慢性の微熱、咳、体重減少、結核接触歴"
+                ],
+                "physical_exam_points": [
+                    "頸部リンパ節の腫脹（瘰癧）、時に波動を触れる"
+                ]
+            },
+            {
+                "name": "全身性エリテマトーデス(SLE)",
+                "interview_points": [
+                    "発熱、関節痛、蝶形紅斑、光線過敏"
+                ],
+                "physical_exam_points": [
+                    "全身性のリンパ節腫脹、蝶形紅斑、関節腫脹"
+                ]
+            },
+            {
+                "name": "転移性癌",
+                "interview_points": [
+                    "原発巣を示唆する症状（咳、嚥下困難、便通異常など）"
+                ],
+                "physical_exam_points": [
+                    "石様に硬く、可動性のないリンパ節、原発巣の検索"
+                ]
+            }
+        ]
+    },
+    {
+        "symptom": "尿量・排尿の異常",
+        "differential_diagnoses": [
+            {
+                "name": "糖尿病",
+                "interview_points": [
+                    "多尿、口渇・多飲、体重減少"
+                ],
+                "physical_exam_points": [
+                    "脱水所見、呼気アセトン臭"
+                ]
+            },
+            {
+                "name": "尿崩症",
+                "interview_points": [
+                    "突然発症の著しい多尿、多飲"
+                ],
+                "physical_exam_points": [
+                    "重度の脱水所見"
+                ]
+            },
+            {
+                "name": "心因性多飲",
+                "interview_points": [
+                    "精神疾患の既往、ストレス"
+                ],
+                "physical_exam_points": [
+                    "特異的所見に乏しい"
+                ]
+            },
+            {
+                "name": "慢性腎臓病",
+                "interview_points": [
+                    "乏尿、浮腫、倦怠感、腎疾患の既往"
+                ],
+                "physical_exam_points": [
+                    "高血圧、浮腫、貧血様顔貌"
+                ]
+            },
+            {
+                "name": "急性腎障害（腎前性）",
+                "interview_points": [
+                    "乏尿、脱水・出血・ショックの原因となる病歴"
+                ],
+                "physical_exam_points": [
+                    "バイタルサイン異常、脱水所見"
+                ]
+            },
+            {
+                "name": "ADH不適合分泌症候群(SIADH)",
+                "interview_points": [
+                    "乏尿、意識障害、悪性腫瘍や中枢神経疾患の既往"
+                ],
+                "physical_exam_points": [
+                    "浮腫を伴わない体重増加、神経学的所見"
+                ]
+            },
+            {
+                "name": "前立腺肥大症",
+                "interview_points": [
+                    "高齢男性、尿勢低下、頻尿、夜間頻尿、残尿感"
+                ],
+                "physical_exam_points": [
+                    "直腸診での前立腺の弾性硬の腫大"
+                ]
+            },
+            {
+                "name": "膀胱炎",
+                "interview_points": [
+                    "女性に多い、頻尿、排尿時痛、残尿感、血尿"
+                ],
+                "physical_exam_points": [
+                    "恥骨上部の圧痛"
+                ]
+            },
+            {
+                "name": "神経因性膀胱",
+                "interview_points": [
+                    "糖尿病、脊髄損傷などの既往、排尿・蓄尿両方の障害"
+                ],
+                "physical_exam_points": [
+                    "腹部診察（膀胱膨満）、神経学的診察（知覚異常、反射異常）"
+                ]
+            },
+            {
+                "name": "前立腺癌・膀胱癌",
+                "interview_points": [
+                    "高齢者、排尿困難、血尿"
+                ],
+                "physical_exam_points": [
+                    "直腸診での前立腺の硬結、腹部診察"
+                ]
+            }
+        ]
+    },
+    {
+        "symptom": "血尿・タンパク尿",
+        "differential_diagnoses": [
+            {
+                "name": "腎細胞癌・膀胱癌・前立腺癌",
+                "interview_points": [
+                    "高齢者、無症候性の肉眼的血尿、体重減少"
+                ],
+                "physical_exam_points": [
+                    "腹部腫瘤、リンパ節腫脹、直腸診"
+                ]
+            },
+            {
+                "name": "尿路感染症（膀胱炎・腎盂腎炎）",
+                "interview_points": [
+                    "排尿時痛、頻尿、残尿感、発熱、背部痛"
+                ],
+                "physical_exam_points": [
+                    "恥骨上部圧痛、CVA叩打痛"
+                ]
+            },
+            {
+                "name": "尿路結石",
+                "interview_points": [
+                    "突然の激しい側腹部痛・背部痛、悪心・嘔吐"
+                ],
+                "physical_exam_points": [
+                    "CVA叩打痛"
+                ]
+            },
+            {
+                "name": "ネフローゼ症候群",
+                "interview_points": [
+                    "高度のタンパク尿、浮腫、体重増加"
+                ],
+                "physical_exam_points": [
+                    "全身性の浮腫（特に眼瞼）、腹水、胸水"
+                ]
+            },
+            {
+                "name": "IgA腎症",
+                "interview_points": [
+                    "若年者、上気道感染後の肉眼的血尿"
+                ],
+                "physical_exam_points": [
+                    "咽頭所見、血圧測定"
+                ]
+            },
+            {
+                "name": "急性糸球体腎炎",
+                "interview_points": [
+                    "先行感染（溶連菌など）後、乏尿、浮腫、高血圧"
+                ],
+                "physical_exam_points": [
+                    "浮腫、高血圧、全身の外観"
+                ]
+            },
+            {
+                "name": "糖尿病腎症",
+                "interview_points": [
+                    "長期の糖尿病歴"
+                ],
+                "physical_exam_points": [
+                    "糖尿病の合併症所見（網膜症、神経障害）"
+                ]
+            },
+            {
+                "name": "多発性嚢胞腎",
+                "interview_points": [
+                    "家族歴、高血圧、腹部膨満"
+                ],
+                "physical_exam_points": [
+                    "腹部診察での両側性の腎腫大"
+                ]
+            }
+        ]
+    },
+    {
+        "symptom": "月経異常",
+        "differential_diagnoses": [
+            {
+                "name": "子宮頸癌・子宮体癌",
+                "interview_points": [
+                    "不正性器出血（特に接触出血、閉経後出血）、帯下の異常"
+                ],
+                "physical_exam_points": [
+                    "（内診・頸管診で）頸部・体部の異常所見"
+                ]
+            },
+            {
+                "name": "子宮筋腫・子宮腺筋症",
+                "interview_points": [
+                    "過多月経、月経困難症の増悪、腹部膨満感"
+                ],
+                "physical_exam_points": [
+                    "腹部診察での腫瘤触知、（内診で）子宮の腫大・圧痛"
+                ]
+            },
+            {
+                "name": "更年期障害",
+                "interview_points": [
+                    "40代後半以降、月経周期の不順、ほてり・発汗などの血管運動神経症状"
+                ],
+                "physical_exam_points": [
+                    "特異的所見に乏しい"
+                ]
+            },
+            {
+                "name": "妊娠・異所性妊娠",
+                "interview_points": [
+                    "最終月経の遅延、妊娠の可能性、少量の性器出血、腹痛"
+                ],
+                "physical_exam_points": [
+                    "腹部圧痛、子宮の腫大・軟化"
+                ]
+            },
+            {
+                "name": "高プロラクチン血症",
+                "interview_points": [
+                    "無月経、乳汁分泌、頭痛・視野障害（下垂体腺腫の場合）"
+                ],
+                "physical_exam_points": [
+                    "乳汁漏出の確認、視野検査"
+                ]
+            },
+            {
+                "name": "摂食障害・過度な運動",
+                "interview_points": [
+                    "無月経、急激な体重減少、ボディイメージの歪み、食事制限"
+                ],
+                "physical_exam_points": [
+                    "るいそう、徐脈、低体温"
+                ]
+            },
+            {
+                "name": "甲状腺機能亢進症・低下症",
+                "interview_points": [
+                    "月経不順（過少月経や無月経）、甲状腺疾患の症状"
+                ],
+                "physical_exam_points": [
+                    "甲状腺腫、頻脈・徐脈、眼球突出、下腿浮腫など"
+                ]
+            },
+            {
+                "name": "多嚢胞性卵巣症候群(PCOS)",
+                "interview_points": [
+                    "稀発月経・無月経、多毛、にきび、肥満"
+                ],
+                "physical_exam_points": [
+                    "多毛、にきび、肥満"
+                ]
+            }
+        ]
+    },
+    {
+        "symptom": "もの忘れ",
+        "differential_diagnoses": [
+            {
+                "name": "Alzheimer病",
+                "interview_points": [
+                    "緩徐進行性のエピソード記憶障害で発症、物盗られ妄想"
+                ],
+                "physical_exam_points": [
+                    "初期は神経学的に特異所見なし、認知機能検査での記憶障害"
+                ]
+            },
+            {
+                "name": "Lewy小体型認知症",
+                "interview_points": [
+                    "変動する認知機能、具体的な幻視、パーキンソニズム、REM睡眠行動異常症"
+                ],
+                "physical_exam_points": [
+                    "パーキンソニズム（筋強剛・動作緩慢・振戦）、姿勢反射障害"
+                ]
+            },
+            {
+                "name": "血管性認知症",
+                "interview_points": [
+                    "脳卒中の既往、段階的な悪化、麻痺や構音障害を伴う"
+                ],
+                "physical_exam_points": [
+                    "神経学的巣症状（片麻痺、構音障害など）、感情失禁"
+                ]
+            },
+            {
+                "name": "正常圧水頭症",
+                "interview_points": [
+                    "歩行障害、認知機能障害、尿失禁の三徴"
+                ],
+                "physical_exam_points": [
+                    "歩行障害（小刻み、すり足）、精神運動緩慢"
+                ]
+            },
+            {
+                "name": "慢性硬膜下血腫",
+                "interview_points": [
+                    "軽微な頭部外傷歴（数週〜数ヶ月前）、亜急性の進行"
+                ],
+                "physical_exam_points": [
+                    "意識レベルの変動、片麻痺などの神経学的巣症状"
+                ]
+            },
+            {
+                "name": "甲状腺機能低下症",
+                "interview_points": [
+                    "無気力、活動性低下、便秘、寒がり"
+                ],
+                "physical_exam_points": [
+                    "徐脈、甲状腺腫、アキレス腱反射遅延"
+                ]
+            },
+            {
+                "name": "うつ病（仮性認知症）",
+                "interview_points": [
+                    "抑うつ気分、興味の喪失、「わからない」という訴えが多い"
+                ],
+                "physical_exam_points": [
+                    "精神運動制止、表情の乏しさ、認知機能検査での努力低下"
+                ]
+            }
+        ]
+    },
+    {
+        "symptom": "頭痛",
+        "differential_diagnoses": [
+            {
+                "name": "くも膜下出血",
+                "interview_points": [
+                    "突然発症の「バットで殴られたような」激痛、悪心・嘔吐、意識障害"
+                ],
+                "physical_exam_points": [
+                    "意識レベル低下、髄膜刺激徴候、瞳孔異常"
+                ]
+            },
+            {
+                "name": "髄膜炎",
+                "interview_points": [
+                    "発熱、悪心・嘔吐、光過敏"
+                ],
+                "physical_exam_points": [
+                    "発熱、意識レベル低下、髄膜刺激徴候"
+                ]
+            },
+            {
+                "name": "脳出血・脳腫瘍",
+                "interview_points": [
+                    "亜急性の増悪、けいれん、運動麻痺などの巣症状"
+                ],
+                "physical_exam_points": [
+                    "神経学的巣症状、うっ血乳頭"
+                ]
+            },
+            {
+                "name": "慢性硬膜下血腫",
+                "interview_points": [
+                    "高齢者、軽微な頭部外傷歴、亜急性の進行"
+                ],
+                "physical_exam_points": [
+                    "意識レベルの変動、片麻痺"
+                ]
+            },
+            {
+                "name": "巨細胞性動脈炎",
+                "interview_points": [
+                    "50歳以上の高齢者、側頭部の拍動性頭痛、顎跛行、視力障害"
+                ],
+                "physical_exam_points": [
+                    "側頭動脈の圧痛・拍動減弱、発熱"
+                ]
+            },
+            {
+                "name": "急性緑内障発作",
+                "interview_points": [
+                    "急激な眼痛、視力低下、悪心・嘔吐、光の周りに虹が見える"
+                ],
+                "physical_exam_points": [
+                    "眼球結膜充血、角膜混濁、瞳孔散大・対光反射消失"
+                ]
+            },
+            {
+                "name": "緊張型頭痛",
+                "interview_points": [
+                    "後頭部〜頸部の締め付けられるような、圧迫されるような痛み、肩こり"
+                ],
+                "physical_exam_points": [
+                    "後頸部・僧帽筋の圧痛"
+                ]
+            },
+            {
+                "name": "片頭痛",
+                "interview_points": [
+                    "片側性の拍動性頭痛、悪心・嘔吐、光・音過敏、前兆（閃輝暗点など）"
+                ],
+                "physical_exam_points": [
+                    "発作時以外は特異的所見なし"
+                ]
+            },
+            {
+                "name": "群発頭痛",
+                "interview_points": [
+                    "男性に多い、夜間の片側眼窩周囲のえぐられるような激痛、流涙・鼻閉を伴う"
+                ],
+                "physical_exam_points": [
+                    "発作時に結膜充血、流涙、縮瞳、眼瞼下垂（Horner症候群）"
+                ]
+            }
+        ]
+    },
+    {
+        "symptom": "運動麻痺・筋力低下",
+        "differential_diagnoses": [
+            {
+                "name": "脳梗塞・脳出血",
+                "interview_points": [
+                    "突然発症、頭痛、意識障害、高血圧・糖尿病などの危険因子"
+                ],
+                "physical_exam_points": [
+                    "片麻痺、顔面神経麻痺、構音障害、腱反射亢進（慢性期）、Babinski徴候陽性"
+                ]
+            },
+            {
+                "name": "椎間板ヘルニア・脊柱管狭窄症",
+                "interview_points": [
+                    "腰痛、下肢への放散痛・しびれ、歩行で増悪（間欠性跛行）"
+                ],
+                "physical_exam_points": [
+                    "デルマトームに一致した感覚障害、腱反射低下、下肢伸展挙上試験陽性"
+                ]
+            },
+            {
+                "name": "Guillain-Barré症候群",
+                "interview_points": [
+                    "先行感染（感冒・下痢）後、数日〜数週で進行する対称性の上行性四肢麻痺"
+                ],
+                "physical_exam_points": [
+                    "対称性の弛緩性麻痺、腱反射の消失、感覚障害は軽度"
+                ]
+            },
+            {
+                "name": "重症筋無力症",
+                "interview_points": [
+                    "日内変動（夕方に増悪）、易疲労性（反復動作で筋力低下）、眼瞼下垂、複視"
+                ],
+                "physical_exam_points": [
+                    "眼瞼下垂、眼球運動障害、易疲労性（上肢挙上維持テストなど）"
+                ]
+            },
+            {
+                "name": "多発性筋炎・皮膚筋炎",
+                "interview_points": [
+                    "亜急性に進行する対称性の近位筋優位の筋力低下、筋肉痛、皮疹"
+                ],
+                "physical_exam_points": [
+                    "近位筋（肩・腰帯部）の筋力低下、Heliotrope疹、Gottron徴候"
+                ]
+            },
+            {
+                "name": "甲状腺機能亢進症",
+                "interview_points": [
+                    "近位筋の筋力低下、体重減少、動悸、発汗"
+                ],
+                "physical_exam_points": [
+                    "近位筋萎縮、手指振戦、頻脈、甲状腺腫"
+                ]
+            },
+            {
+                "name": "糖尿病性神経障害",
+                "interview_points": [
+                    "長期の糖尿病歴、手足のしびれ・感覚鈍麻"
+                ],
+                "physical_exam_points": [
+                    "手袋靴下型の感覚障害、アキレス腱反射低下"
+                ]
+            },
+            {
+                "name": "閉塞性動脈硬化症",
+                "interview_points": [
+                    "歩行時の下肢痛（間欠性跛行）、冷感、しびれ"
+                ],
+                "physical_exam_points": [
+                    "下肢の動脈拍動の減弱・消失、皮膚の蒼白・冷感"
+                ]
+            }
+        ]
+    },
+    {
+        "symptom": "腰背部痛",
+        "differential_diagnoses": [
+            {
+                "name": "急性腰痛症・筋筋膜性腰痛",
+                "interview_points": [
+                    "特定の動作（重量物挙上など）に関連した急性発症、動作時痛"
+                ],
+                "physical_exam_points": [
+                    "傍脊柱筋の圧痛、神経学的異常なし"
+                ]
+            },
+            {
+                "name": "椎間板ヘルニア",
+                "interview_points": [
+                    "下肢への放散痛・しびれ（坐骨神経痛）、咳・くしゃみで増悪"
+                ],
+                "physical_exam_points": [
+                    "下肢伸展挙上試験（SLR）陽性、デルマトームに一致した感覚障害・筋力低下"
+                ]
+            },
+            {
+                "name": "変形性脊椎症・脊柱管狭窄症",
+                "interview_points": [
+                    "高齢者、歩行により増悪し前屈みで軽快する下肢痛・しびれ（間欠性跛行）"
+                ],
+                "physical_exam_points": [
+                    "脊柱の可動域制限、神経学的所見は様々"
+                ]
+            },
+            {
+                "name": "腰椎圧迫骨折",
+                "interview_points": [
+                    "高齢者、骨粗鬆症の既往、尻もちなどの軽微な外傷後、体動困難"
+                ],
+                "physical_exam_points": [
+                    "骨折部位の叩打痛、脊柱後弯"
+                ]
+            },
+            {
+                "name": "転移性脊椎腫瘍",
+                "interview_points": [
+                    "癌の既往、安静時・夜間にも軽快しない持続性の痛み、体重減少"
+                ],
+                "physical_exam_points": [
+                    "棘突起の叩打痛、神経学的巣症状"
+                ]
+            },
+            {
+                "name": "急性大動脈解離",
+                "interview_points": [
+                    "突然発症の引き裂かれるような激痛、胸部から背部・腰部への移動"
+                ],
+                "physical_exam_points": [
+                    "ショックバイタル、血圧・脈拍の左右差"
+                ]
+            },
+            {
+                "name": "尿管結石・腎盂腎炎",
+                "interview_points": [
+                    "側腹部から腰背部への激痛、血尿、発熱"
+                ],
+                "physical_exam_points": [
+                    "肋骨脊柱角（CVA）の著明な叩打痛"
+                ]
+            },
+            {
+                "name": "急性膵炎・膵癌",
+                "interview_points": [
+                    "心窩部から背部への放散痛、悪心・嘔吐、アルコール多飲歴"
+                ],
+                "physical_exam_points": [
+                    "心窩部圧痛、腹膜刺激徴候"
+                ]
+            }
+        ]
+    },
+    {
+        "symptom": "関節痛・関節腫脹",
+        "differential_diagnoses": [
+            {
+                "name": "変形性関節症",
+                "interview_points": [
+                    "高齢者、荷重関節（膝・股関節）の動作時痛、朝のこわばりは短い（<30分）"
+                ],
+                "physical_exam_points": [
+                    "関節の変形、骨性膨隆、可動域制限、炎症所見は軽度"
+                ]
+            },
+            {
+                "name": "関節リウマチ",
+                "interview_points": [
+                    "朝のこわばり（1時間以上）、手指の小関節（DIP除く）の対称性多関節炎"
+                ],
+                "physical_exam_points": [
+                    "対称性の関節腫脹・熱感・圧痛、リウマトイド結節、手指の変形"
+                ]
+            },
+            {
+                "name": "痛風",
+                "interview_points": [
+                    "中年男性に多い、突然発症の激痛（特に母趾MTP関節）、飲酒・暴食が誘因"
+                ],
+                "physical_exam_points": [
+                    "単関節炎（発赤・腫脹・熱感・圧痛が著明）、痛風結節"
+                ]
+            },
+            {
+                "name": "偽痛風",
+                "interview_points": [
+                    "高齢者、膝や手関節などの大関節に多い急性関節炎"
+                ],
+                "physical_exam_points": [
+                    "単〜少数関節の炎症所見"
+                ]
+            },
+            {
+                "name": "全身性エリテマトーデス(SLE)",
+                "interview_points": [
+                    "若年女性に多い、多関節痛、発熱、皮疹（蝶形紅斑）、光線過敏"
+                ],
+                "physical_exam_points": [
+                    "蝶形紅斑、円板状皮疹、口腔内潰瘍、非びらん性の関節炎"
+                ]
+            },
+            {
+                "name": "化膿性関節炎・骨髄炎",
+                "interview_points": [
+                    "急性の単関節炎、発熱、悪寒戦慄、先行する感染や関節穿刺"
+                ],
+                "physical_exam_points": [
+                    "単一関節の著明な発赤・腫脹・熱感・圧痛、関節可動域の著しい制限"
+                ]
+            }
+        ]
+    },
+    {
+        "symptom": "外傷・熱傷",
+        "differential_diagnoses": [
+            {
+                "name": "気道閉塞・気道熱傷",
+                "interview_points": [
+                    "顔面の熱傷、鼻毛の焼失、嗄声、煤の混じった痰"
+                ],
+                "physical_exam_points": [
+                    "喘鳴、呼吸困難、口腔・咽頭の発赤・浮腫"
+                ]
+            },
+            {
+                "name": "緊張性気胸・血胸",
+                "interview_points": [
+                    "胸部外傷、呼吸困難、胸痛"
+                ],
+                "physical_exam_points": [
+                    "呼吸音の左右差、気管偏位、ショック、皮下気腫"
+                ]
+            },
+            {
+                "name": "フレイルチェスト",
+                "interview_points": [
+                    "胸部外傷、奇異呼吸の目撃"
+                ],
+                "physical_exam_points": [
+                    "胸壁の奇異性運動、動揺する肋骨の触知"
+                ]
+            },
+            {
+                "name": "腹腔内出血",
+                "interview_points": [
+                    "腹部外傷、腹痛、腹部膨満"
+                ],
+                "physical_exam_points": [
+                    "ショックバイタル、腹部圧痛・膨満、腹膜刺激徴候"
+                ]
+            },
+            {
+                "name": "頭蓋内出血",
+                "interview_points": [
+                    "頭部外傷、意識障害、頭痛、嘔吐"
+                ],
+                "physical_exam_points": [
+                    "意識レベル低下（GCS）、瞳孔不同、神経学的巣症状"
+                ]
+            },
+            {
+                "name": "脊髄損傷",
+                "interview_points": [
+                    "高エネルギー外傷、頸部・背部痛、四肢の麻痺・しびれ"
+                ],
+                "physical_exam_points": [
+                    "四肢の運動・感覚障害、ショック（神経原性）"
+                ]
+            },
+            {
+                "name": "骨盤・大腿骨骨折",
+                "interview_points": [
+                    "高エネルギー外傷、骨盤・大腿部の変形・疼痛"
+                ],
+                "physical_exam_points": [
+                    "ショックバイタル、下肢の変形・短縮・異常回旋"
+                ]
+            },
+            {
+                "name": "熱傷",
+                "interview_points": [
+                    "受傷機転（火炎・熱湯・化学薬品・電気）"
+                ],
+                "physical_exam_points": [
+                    "熱傷深度（I〜III度）と面積（9の法則）の評価、気道熱傷の徴候"
+                ]
+            }
+        ]
+    }
+]

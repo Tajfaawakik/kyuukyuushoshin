@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>採血検査結果入力ツール</title>
+    <link rel="stylesheet" href="style3.css">
+</head>
+<body>
+    <div class="container">
+        <h1>採血検査結果入力ツール</h1>
+        <form id="input-form">
+            <h2>基本情報</h2>
+            <div class="form-group basic-info">
+                <div>
+                    <label for="patient-id">患者ID</label>
+                    <input type="text" id="patient-id">
+                </div>
+                <div>
+                    <label for="test-date">検査日</label>
+                    <input type="date" id="test-date">
+                </div>
+            </div>
+
+            <div id="test-items-container">
+                </div>
+
+            <div class="form-group">
+                <label for="memo">メモ</label>
+                <textarea id="memo" rows="3"></textarea>
+            </div>
+
+            <button type="submit" class="save-button">保存する</button>
+        </form>
+
+        <hr>
+
+        <h2>保存済みデータ一覧</h2>
+        <div id="data-list">
+            </div>
+    </div>
+    <script src="app3.js"></script>
+</body>
+</html>

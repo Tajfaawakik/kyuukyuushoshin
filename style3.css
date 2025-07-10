@@ -1,0 +1,198 @@
+:root {
+    --primary-color: #007bff;
+    --border-color: #ddd;
+    --danger-color: #dc3545;
+    --highlight-color: #fff3cd;
+    --bg-color: #f8f9fa;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: var(--bg-color);
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 20px 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+h1, h2 {
+    color: #333;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 1.2em;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-color: var(--border-color);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.basic-info {
+    display: flex;
+    gap: 20px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="number"],
+textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    box-sizing: border-box;
+    transition: border-color 0.2s;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+/* 異常値ハイライト */
+input.abnormal {
+    color: var(--danger-color);
+    font-weight: bold;
+    background-color: var(--highlight-color);
+}
+
+.save-button {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.2s;
+}
+
+.save-button:hover {
+    background-color: #0056b3;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.item-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.reference-value {
+    font-size: 0.8em;
+    color: #666;
+    text-align: center;
+    margin-top: 2px;
+}
+
+/* アコーディオン [cite: 39, 40] */
+.accordion-header {
+    background-color: #f1f1f1;
+    cursor: pointer;
+    padding: 12px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 1.1em;
+    font-weight: bold;
+    transition: background-color 0.2s;
+    margin-top: 20px;
+    border-radius: 4px;
+}
+
+.accordion-header:hover {
+    background-color: #e0e0e0;
+}
+
+.accordion-header::before {
+    content: '▶ ';
+    font-size: 0.9em;
+    transition: transform 0.2s;
+}
+
+.accordion-header.active::before {
+    transform: rotate(90deg);
+}
+
+
+.accordion-content {
+    padding: 0 18px;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    border-left: 1px solid var(--border-color);
+    border-right: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.data-record {
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.data-record h3 {
+    margin-top: 0;
+    font-size: 1.1em;
+}
+
+.data-record-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+}
+
+.delete-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: var(--danger-color);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    font-weight: bold;
+    line-height: 24px;
+    text-align: center;
+}
+
+/* レスポンシブデザイン [cite: 55] */
+@media (max-width: 600px) {
+    .basic-info {
+        flex-direction: column;
+        gap: 15px;
+    }
+}

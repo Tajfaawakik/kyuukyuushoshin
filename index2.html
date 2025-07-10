@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>症候鑑別支援Webアプリ</title>
+    <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+    <header>
+        <h1>症候鑑別支援Webアプリ</h1>
+    </header>
+    <main>
+        <div class="controls">
+            <label for="symptom-select">症候を選択してください (複数選択可: Ctrl/Cmd or Shift):</label>
+            <select name="symptoms" id="symptom-select" multiple></select>
+        </div>
+        <div id="selected-keywords-container">
+            <strong>選択済みキーワード:</strong>
+            <div id="selected-keywords-tags"></div>
+        </div>
+        <div id="results-container">
+            <p>データを読み込んでいます...</p>
+        </div>
+        
+        <div id="record-copy-area">
+            <h2>記録・コピー用テキスト</h2>
+            <textarea id="copy-textarea" readonly placeholder="症候や鑑別疾患を選択すると、内容がここに記録されます。"></textarea>
+            <button id="copy-button">クリップボードにコピー</button>
+        </div>
+
+    </main>
+    <footer>
+        <p>&copy; 2025 症候鑑別支援Webアプリ</p>
+    </footer>
+
+    <script src="script2.js"></script>
+</body>
+</html>

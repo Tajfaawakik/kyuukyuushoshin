@@ -1,0 +1,147 @@
+body {
+    font-family: sans-serif;
+    background-color: #f4f7f9;
+    color: #333;
+    line-height: 1.6;
+    margin: 20px;
+}
+
+h1, h2 {
+    color: #005a9c;
+}
+
+.container {
+    display: flex;
+    gap: 20px;
+}
+
+.input-panel, .output-panel {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.input-panel {
+    width: 60%;
+}
+
+.output-panel {
+    width: 40%;
+    position: sticky;
+    top: 20px;
+    height: 90vh;
+}
+
+fieldset {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    padding: 15px;
+}
+
+legend {
+    font-weight: bold;
+    color: #005a9c;
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+    font-weight: bold;
+}
+
+input[type="text"], input[type="number"], textarea, select {
+    width: 95%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+#output-memo {
+    width: 95%;
+    height: 80%;
+    white-space: pre-wrap;
+    background-color: #e9ecef;
+}
+
+.button-group button {
+    padding: 8px 12px;
+    margin: 5px 5px 5px 0;
+    border: 1px solid #007bff;
+    background-color: #fff;
+    color: #007bff;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.button-group button.active {
+    background-color: #007bff;
+    color: #fff;
+}
+
+#copy-button, .add-button, .delete-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.delete-button {
+    background-color: #dc3545;
+    padding: 5px 10px;
+    width: auto;
+}
+
+#copy-button:hover {
+    background-color: #218838;
+}
+
+.med-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.med-row input {
+    flex-grow: 1;
+}
+
+.details-area {
+    padding: 10px;
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 4px;
+    margin-top: 5px;
+}
+
+.adl-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+.adl-item select {
+    width: 60%;
+}
+
+.score-display {
+    text-align: right;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-top: 15px;
+    color: #dc3545;
+}

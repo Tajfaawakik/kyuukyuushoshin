@@ -1,0 +1,312 @@
+[
+    {
+        "id": "wbc",
+        "name": "WBC",
+        "unit": "x10²/μL",
+        "min": 33,
+        "max": 86,
+        "step": 1,
+        "category": "血算",
+        "alwaysVisible": true
+    },
+    {
+        "id": "rbc",
+        "name": "RBC",
+        "unit": "x10⁴/μL",
+        "min": 380,
+        "max": 489,
+        "step": 10,
+        "category": "血算",
+        "alwaysVisible": true
+    },
+    {
+        "id": "hb",
+        "name": "Hb",
+        "unit": "g/dL",
+        "min": 11.6,
+        "max": 14.8,
+        "step": 0.1,
+        "category": "血算",
+        "alwaysVisible": true
+    },
+    {
+        "id": "hct",
+        "name": "Hct",
+        "unit": "%",
+        "min": 35.5,
+        "max": 43.9,
+        "step": 0.1,
+        "category": "血算",
+        "alwaysVisible": true
+    },
+    {
+        "id": "plt",
+        "name": "Plt",
+        "unit": "x10⁴/μL",
+        "min": 15.8,
+        "max": 34.8,
+        "step": 0.1,
+        "category": "血算",
+        "alwaysVisible": true
+    },
+    {
+        "id": "tp",
+        "name": "TP",
+        "unit": "g/dL",
+        "min": 6.6,
+        "max": 8.1,
+        "step": 0.1,
+        "category": "生化学",
+        "alwaysVisible": true
+    },
+    {
+        "id": "alb",
+        "name": "Alb",
+        "unit": "g/dL",
+        "min": 4.1,
+        "max": 5.1,
+        "step": 0.1,
+        "category": "生化学",
+        "alwaysVisible": true
+    },
+    {
+        "id": "ast",
+        "name": "AST",
+        "unit": "U/L",
+        "min": 13,
+        "max": 30,
+        "step": 1,
+        "category": "生化学",
+        "alwaysVisible": true
+    },
+    {
+        "id": "alt",
+        "name": "ALT",
+        "unit": "U/L",
+        "min": 7,
+        "max": 23,
+        "step": 1,
+        "category": "生化学",
+        "alwaysVisible": true
+    },
+    {
+        "id": "ldh",
+        "name": "LDH",
+        "unit": "U/L",
+        "min": 124,
+        "max": 222,
+        "step": 1,
+        "category": "生化学",
+        "alwaysVisible": true
+    },
+    {
+        "id": "ck",
+        "name": "CK",
+        "unit": "U/L",
+        "min": 41,
+        "max": 153,
+        "step": 1,
+        "category": "生化学",
+        "alwaysVisible": true
+    },
+    {
+        "id": "bun",
+        "name": "BUN",
+        "unit": "mg/dL",
+        "min": 8,
+        "max": 20,
+        "step": 1,
+        "category": "生化学",
+        "alwaysVisible": true
+    },
+    {
+        "id": "cre",
+        "name": "Cre",
+        "unit": "mg/dL",
+        "min": 0.47,
+        "max": 0.79,
+        "step": 0.01,
+        "category": "生化学",
+        "alwaysVisible": true
+    },
+    {
+        "id": "ua",
+        "name": "UA",
+        "unit": "mg/dL",
+        "min": 2.6,
+        "max": 5.5,
+        "step": 0.1,
+        "category": "生化学",
+        "alwaysVisible": true
+    },
+    {
+        "id": "t-cho",
+        "name": "T-Cho",
+        "unit": "mg/dL",
+        "min": 140,
+        "max": 199,
+        "step": 1,
+        "category": "生化学",
+        "alwaysVisible": true
+    },
+    {
+        "id": "glu",
+        "name": "血糖",
+        "unit": "mg/dL",
+        "min": 73,
+        "max": 109,
+        "step": 1,
+        "category": "生化学",
+        "alwaysVisible": true
+    },
+    {
+        "id": "na",
+        "name": "Na",
+        "unit": "mEq/L",
+        "min": 138,
+        "max": 145,
+        "step": 1,
+        "category": "電解質",
+        "alwaysVisible": true
+    },
+    {
+        "id": "k",
+        "name": "K",
+        "unit": "mEq/L",
+        "min": 3.6,
+        "max": 4.8,
+        "step": 0.1,
+        "category": "電解質",
+        "alwaysVisible": true
+    },
+    {
+        "id": "cl",
+        "name": "Cl",
+        "unit": "mEq/L",
+        "min": 101,
+        "max": 109,
+        "step": 1,
+        "category": "電解質",
+        "alwaysVisible": true
+    },
+    {
+        "id": "ca",
+        "name": "Ca",
+        "unit": "mg/dL",
+        "min": 8.8,
+        "max": 10.1,
+        "step": 0.1,
+        "category": "電解質",
+        "alwaysVisible": false
+    },
+    {
+        "id": "p",
+        "name": "P",
+        "unit": "mg/dL",
+        "min": 2.7,
+        "max": 4.6,
+        "step": 0.1,
+        "category": "電解質",
+        "alwaysVisible": false
+    },
+    {
+        "id": "mg",
+        "name": "Mg",
+        "unit": "mg/dL",
+        "min": 1.7,
+        "max": 2.3,
+        "step": 0.1,
+        "category": "電解質",
+        "alwaysVisible": false
+    },
+    {
+        "id": "pt-sec",
+        "name": "PT(sec)",
+        "unit": "秒",
+        "min": 9.8,
+        "max": 12.1,
+        "step": 0.1,
+        "category": "凝固系"
+    },
+    {
+        "id": "pt-inr",
+        "name": "PT-INR",
+        "unit": "",
+        "min": 0.88,
+        "max": 1.08,
+        "step": 0.01,
+        "category": "凝固系"
+    },
+    {
+        "id": "aptt",
+        "name": "APTT",
+        "unit": "秒",
+        "min": 24.2,
+        "max": 36.4,
+        "step": 0.1,
+        "category": "凝固系"
+    },
+    {
+        "id": "tsh",
+        "name": "TSH",
+        "unit": "μIU/mL",
+        "min": 0.35,
+        "max": 4.94,
+        "step": 0.01,
+        "category": "甲状腺"
+    },
+    {
+        "id": "ft3",
+        "name": "FT3",
+        "unit": "pg/mL",
+        "min": 1.71,
+        "max": 3.71,
+        "step": 0.01,
+        "category": "甲状腺"
+    },
+    {
+        "id": "ft4",
+        "name": "FT4",
+        "unit": "ng/dL",
+        "min": 0.7,
+        "max": 1.48,
+        "step": 0.01,
+        "category": "甲状腺"
+    },
+    {
+        "id": "ph",
+        "name": "pH",
+        "unit": "",
+        "min": 7.35,
+        "max": 7.45,
+        "step": 0.01,
+        "category": "動脈血液ガス"
+    },
+    {
+        "id": "pco2",
+        "name": "pCO₂",
+        "unit": "Torr",
+        "min": 35,
+        "max": 45,
+        "step": 1,
+        "category": "動脈血液ガス"
+    },
+    {
+        "id": "po2",
+        "name": "pO₂",
+        "unit": "Torr",
+        "min": 80,
+        "max": 100,
+        "step": 1,
+        "category": "動脈血液ガス"
+    },
+    {
+        "id": "hco3",
+        "name": "HCO₃",
+        "unit": "mEq/L",
+        "min": 22,
+        "max": 26,
+        "step": 1,
+        "category": "動脈血液ガス"
+    }
+]
