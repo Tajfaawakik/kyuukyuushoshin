@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>救急初診支援統合アプリ</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="app-header">
+        <h1>救急初診支援統合アプリ</h1>
+        <nav id="app-nav">
+            <button class="nav-button active" data-target="app1">カルテ記載支援</button>
+            <button class="nav-button" data-target="app2">症候鑑別支援</button>
+            <button class="nav-button" data-target="app3">採血結果入力</button>
+        </nav>
+    </header>
+
+    <main id="app-container">
+        <div id="app1" class="app-content active">
+            <div class="container-app1">
+                <div class="input-panel">
+                    <h2>入力フォーム</h2>
+                    <fieldset id="patient-info">
+                        <legend>患者情報</legend>
+                        <label for="name">氏名:</label>
+                        <input type="text" id="name" placeholder="山田 太郎">
+                        <label for="age">年齢:</label>
+                        <input type="number" id="age" placeholder="75"> 歳
+                        <label>性別:</label>
+                        <div id="gender" class="button-group">
+                            <button data-value="男性">男性</button>
+                            <button data-value="女性">女性</button>
+                            <button data-value="その他">その他</button>
+                        </div>
+                    </fieldset>
+                    <fieldset id="medical-history">
+                        <legend>既往歴管理</legend>
+                        <div id="history-tags" class="button-group"></div>
+                        <textarea id="surgery-history" placeholder="手術歴、その他の特記事項を自由記述"></textarea>
+                    </fieldset>
+                    <fieldset id="allergies">
+                        <legend>アレルギー管理</legend>
+                        <div id="allergy-tags" class="button-group">
+                            <button data-value="ペニシリン系">ペニシリン系</button>
+                            <button data-value="NSAIDs">NSAIDs</button>
+                            <button data-value="造影剤">造影剤</button>
+                            <button data-value="卵">卵</button>
+                            <button data-value="なし">なし</button>
+                        </div>
+                        <textarea id="other-allergies" placeholder="上記タグ以外の情報を自由記述"></textarea>
+                    </fieldset>
+                    <fieldset id="medication">
+                        <legend>内服薬管理</legend>
+                        <div id="med-suggestion-tags" class="button-group"></div>
+                        <div id="medication-list"></div>
+                        <button id="add-med-row" class="add-button">＋ 薬剤を追加</button>
+                    </fieldset>
+                    <fieldset id="lifestyle">
+                        <legend>生活歴・ADL評価</legend>
+                        <label>喫煙歴:</label>
+                        <div id="smoking-status" class="button-group">
+                            <button data-value="なし">なし</button>
+                            <button data-value="現喫煙">現喫煙</button>
+                            <button data-value="過去喫煙">過去喫煙</button>
+                        </div>
+                        <div id="smoking-details" class="details-area"></div>
+                        <label>飲酒歴:</label>
+                        <div id="drinking-status" class="button-group">
+                            <button data-value="なし">なし</button>
+                            <button data-value="機会飲酒">機会飲酒</button>
+                            <button data-value="毎日">毎日</button>
+                        </div>
+                        <div id="drinking-details" class="details-area"></div>
+                        <label>ADL評価 (Barthel Index):</label>
+                        <div id="adl-assessment"></div>
+                        <div id="adl-score" class="score-display">ADL合計: 0 / 100点</div>
+                    </fieldset>
+                </div>
+                <div class="output-panel">
+                    <h2>カルテ用メモ出力</h2>
+                    <textarea id="output-memo" readonly></textarea>
+                    <button id="copy-button-app1">クリップボードにコピー</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="app2" class="app-content">
+             <main class="container-app2">
+                <div class="controls">
+                    <label for="symptom-select">症候を選択してください (複数選択可: Ctrl/Cmd or Shift):</label>
+                    <select name="symptoms" id="symptom-select" multiple></select>
+                </div>
+                <div id="selected-keywords-container">
+                    <strong>選択済みキーワード:</strong>
+                    <div id="selected-keywords-tags"></div>
+                </div>
+                <div id="results-container">
+                    <p>データを読み込んでいます...</p>
+                </div>
+                <div id="record-copy-area">
+                    <h2>記録・コピー用テキスト</h2>
+                    <textarea id="copy-textarea" readonly placeholder="症候や鑑別疾患を選択すると、内容がここに記録されます。"></textarea>
+                    <button id="copy-button-app2">クリップボードにコピー</button>
+                </div>
+            </main>
+        </div>
+
+        <div id="app3" class="app-content">
+            <div class="container-app3">
+                <form id="input-form">
+                    <h2>基本情報</h2>
+                    <div class="form-group basic-info">
+                        <div>
+                            <label for="patient-id">患者ID</label>
+                            <input type="text" id="patient-id">
+                        </div>
+                        <div>
+                            <label for="test-date">検査日</label>
+                            <input type="date" id="test-date">
+                        </div>
+                    </div>
+                    <div id="test-items-container"></div>
+                    <div class="form-group">
+                        <label for="memo">メモ</label>
+                        <textarea id="memo" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="save-button">保存する</button>
+                </form>
+                <hr>
+                <h2>保存済みデータ一覧</h2>
+                <div id="data-list"></div>
+            </div>
+        </div>
+    </main>
+
+    <script src="main.js"></script>
+</body>
+</html>

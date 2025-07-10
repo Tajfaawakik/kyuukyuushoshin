@@ -1,0 +1,601 @@
+/* General Styles */
+:root {
+    --primary-color: #005a9c;
+    --border-color: #ddd;
+    --bg-color: #f4f7f9;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo;
+    line-height: 1.6;
+    color: #333;
+    background-color: var(--bg-color);
+    margin: 0;
+}
+
+.app-header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.app-header h1 {
+    margin: 0 0 1rem 0;
+}
+
+nav#app-nav {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.nav-button {
+    background-color: #fff;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.nav-button:hover, .nav-button.active {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+main#app-container {
+    padding: 1rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.app-content {
+    display: none;
+    animation: fadeIn 0.5s;
+}
+
+.app-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* App 1: カルテ記載支援 */
+#app1 h1, #app1 h2 {
+    color: #005a9c;
+}
+
+#app1 .container-app1 {
+    display: flex;
+    gap: 20px;
+}
+
+#app1 .input-panel, #app1 .output-panel {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+#app1 .input-panel {
+    width: 60%;
+}
+
+#app1 .output-panel {
+    width: 40%;
+    position: sticky;
+    top: 20px;
+    height: 90vh;
+}
+
+#app1 fieldset {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    padding: 15px;
+}
+
+#app1 legend {
+    font-weight: bold;
+    color: #005a9c;
+}
+
+#app1 label {
+    display: block;
+    margin: 10px 0 5px;
+    font-weight: bold;
+}
+
+#app1 input[type="text"], #app1 input[type="number"], #app1 textarea, #app1 select {
+    width: 95%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+#app1 textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+#app1 #output-memo {
+    width: 95%;
+    height: 80%;
+    white-space: pre-wrap;
+    background-color: #e9ecef;
+}
+
+#app1 .button-group button {
+    padding: 8px 12px;
+    margin: 5px 5px 5px 0;
+    border: 1px solid #007bff;
+    background-color: #fff;
+    color: #007bff;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+#app1 .button-group button.active {
+    background-color: #007bff;
+    color: #fff;
+}
+
+#app1 #copy-button-app1, #app1 .add-button, #app1 .delete-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 10px;
+}
+
+#app1 .delete-button {
+    background-color: #dc3545;
+    padding: 5px 10px;
+    width: auto;
+}
+
+#app1 #copy-button-app1:hover {
+    background-color: #218838;
+}
+
+#app1 .med-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 10px;
+}
+#app1 .med-row input {
+    flex-grow: 1;
+}
+
+#app1 .details-area {
+    padding: 10px;
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 4px;
+    margin-top: 5px;
+}
+
+#app1 .adl-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+#app1 .adl-item select {
+    width: 60%;
+}
+
+#app1 .score-display {
+    text-align: right;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-top: 15px;
+    color: #dc3545;
+}
+
+
+/* App 2: 症候鑑別支援 */
+#app2 {
+    --secondary-color: #f0f8ff;
+    --highlight-bg: #ffd700;
+    --highlight-text: #000;
+    --tag-bg: #e0e0e0;
+    --pinned-color: #ff4500;
+    --chief-complaint-color: #d32f2f;
+}
+
+#app2 .container-app2 {
+    padding: 1rem;
+}
+
+#app2 .controls {
+    margin-bottom: 1rem;
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+#app2 .controls label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+#app2 #symptom-select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    min-height: 100px;
+}
+
+#app2 #selected-keywords-container {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background: var(--secondary-color);
+    border-radius: 8px;
+    border: 1px solid #e0e8f0;
+}
+
+#app2 #selected-keywords-container strong {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+#app2 #selected-keywords-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+#app2 .keyword-tag {
+    background-color: var(--tag-bg);
+    color: #333;
+    padding: 0.3rem 0.7rem;
+    border-radius: 15px;
+    font-size: 0.9em;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#app2 .keyword-tag:hover {
+    background-color: #c7c7c7;
+}
+
+#app2 .keyword-tag .remove-tag::before {
+    content: ' ×';
+    font-weight: bold;
+    margin-left: 4px;
+}
+
+#app2 #results-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+#app2 .symptom-group {
+    background: white;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    flex: 1 1 100%;
+    transition: border-color 0.3s;
+}
+
+#app2 .symptom-group.primary {
+    border: 2px solid var(--chief-complaint-color);
+}
+
+#app2 .symptom-group h2 {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 0.5rem;
+    margin-top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#app2 .primary-badge {
+    background-color: var(--chief-complaint-color);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 0.2rem 0.6rem;
+    border-radius: 10px;
+    margin-left: 1rem;
+}
+
+#app2 .disease-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    position: relative;
+    transition: border-color 0.3s;
+}
+
+#app2 .disease-card.pinned {
+    border-color: var(--pinned-color);
+    border-width: 1.5px;
+}
+
+#app2 .disease-card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+#app2 .disease-card h3 {
+    margin: 0;
+    flex-grow: 1;
+}
+
+#app2 .disease-card-header .pin-button {
+    position: static;
+    font-size: 1.2rem;
+    order: 2;
+}
+
+#app2 .diagnosis-checkbox {
+    width: 1.2rem;
+    height: 1.2rem;
+    cursor: pointer;
+    order: 0;
+}
+
+#app2 .disease-card h4 {
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    color: #555;
+    border-left: 4px solid var(--border-color);
+    padding-left: 8px;
+}
+
+#app2 .clickable-keyword {
+    cursor: pointer;
+    padding: 2px;
+    border-radius: 3px;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+#app2 .clickable-keyword.highlighted {
+    background-color: var(--highlight-bg);
+    color: var(--highlight-text);
+    font-weight: bold;
+}
+
+#app2 .pin-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #ccc;
+    transition: color 0.2s, transform 0.2s;
+}
+
+#app2 .pin-button:hover {
+    transform: scale(1.2);
+}
+
+#app2 .pin-button.pinned {
+    color: var(--pinned-color);
+}
+
+#app2 #record-copy-area {
+    margin-top: 2rem;
+    background-color: #fff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+#app2 #record-copy-area h2 {
+    margin-top: 0;
+    color: var(--primary-color);
+}
+
+#app2 #copy-textarea {
+    width: 100%;
+    height: 200px;
+    padding: 0.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.9em;
+    white-space: pre-wrap;
+    background-color: #f9f9f9;
+}
+
+#app2 #copy-button-app2 {
+    display: block;
+    margin-top: 1rem;
+    padding: 0.7rem 1.5rem;
+    border: none;
+    background-color: var(--primary-color);
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#app2 #copy-button-app2:hover {
+    background-color: #004a8c;
+}
+
+/* App 3: 採血結果入力 */
+#app3 {
+    --danger-color: #dc3545;
+    --highlight-color: #fff3cd;
+}
+#app3 .container-app3 {
+    max-width: 800px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 20px 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+#app3 h2 {
+    color: #333;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+#app3 .form-group {
+    margin-bottom: 15px;
+}
+#app3 .basic-info {
+    display: flex;
+    gap: 20px;
+}
+#app3 label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+#app3 input[type="text"],
+#app3 input[type="date"],
+#app3 input[type="number"],
+#app3 textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    box-sizing: border-box;
+    transition: border-color 0.2s;
+}
+#app3 input:focus, #app3 textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+#app3 input.abnormal {
+    color: var(--danger-color);
+    font-weight: bold;
+    background-color: var(--highlight-color);
+}
+#app3 .save-button {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.2s;
+}
+#app3 .save-button:hover {
+    background-color: #0056b3;
+}
+#app3 .category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
+#app3 .item-group {
+    display: flex;
+    flex-direction: column;
+}
+#app3 .reference-value {
+    font-size: 0.8em;
+    color: #666;
+    text-align: center;
+    margin-top: 2px;
+}
+#app3 .accordion-header {
+    background-color: #f1f1f1;
+    cursor: pointer;
+    padding: 12px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 1.1em;
+    font-weight: bold;
+    transition: background-color 0.2s;
+    margin-top: 20px;
+    border-radius: 4px;
+}
+#app3 .accordion-header:hover {
+    background-color: #e0e0e0;
+}
+#app3 .accordion-header::before {
+    content: '▶ ';
+    font-size: 0.9em;
+    transition: transform 0.2s;
+}
+#app3 .accordion-header.active::before {
+    transform: rotate(90deg);
+}
+#app3 .accordion-content {
+    padding: 18px;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    border-left: 1px solid var(--border-color);
+    border-right: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+#app3 .data-record {
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 15px;
+    position: relative;
+}
+#app3 .data-record h3 {
+    margin-top: 0;
+    font-size: 1.1em;
+}
+#app3 .data-record-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+}
+#app3 .delete-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: var(--danger-color);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    font-weight: bold;
+    line-height: 24px;
+    text-align: center;
+}
+@media (max-width: 600px) {
+    #app1 .container-app1, #app3 .basic-info {
+        flex-direction: column;
+    }
+    #app1 .input-panel, #app1 .output-panel {
+        width: 100%;
+    }
+}
