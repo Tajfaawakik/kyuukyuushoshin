@@ -1,72 +1,247 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // =================================================================================
+    // グローバル変数とアプリケーションの状態管理
+    // =================================================================================
+    let patients = [];
+    let activePatientId = null;
+    let appData = {}; // 外部JSONデータを保持
 
-    // ===== Global App Navigation =====
-    const navContainer = document.getElementById('app-nav');
-    const contentContainers = document.querySelectorAll('.app-content');
-    const navButtons = document.querySelectorAll('.nav-button');
+    // DOM要素のキャッシュ
+    const patientListEl = document.getElementById('patient-list');
+    const newPatientBtn = document.getElementById('new-patient-btn');
+    const currentPatientNameEl = document.getElementById('current-patient-name');
+    const appNav = document.getElementById('app-nav');
+    const appContents = document.querySelectorAll('.app-content');
+    const chartAppEl = document.getElementById('app-chart');
 
-    // Initialize all apps
-    const appInitializers = {
-        app1: initializeChartSupportApp,
-        app2: initializeDiagnosisSupportApp,
-        app3: initializeBloodTestApp
-    };
-
-    const initializedApps = new Set();
-
-    function switchApp(targetId) {
-        contentContainers.forEach(container => {
-            container.classList.remove('active');
-        });
-        navButtons.forEach(button => {
-            button.classList.remove('active');
-        });
-
-        document.getElementById(targetId).classList.add('active');
-        document.querySelector(`.nav-button[data-target="${targetId}"]`).classList.add('active');
-
-        // Initialize the app only on its first load
-        if (!initializedApps.has(targetId)) {
-            appInitializers[targetId]();
-            initializedApps.add(targetId);
-        }
-    }
-
-    navContainer.addEventListener('click', (e) => {
-        if (e.target.matches('.nav-button')) {
-            const targetId = e.target.dataset.target;
-            switchApp(targetId);
-        }
+    // =================================================================================
+    // データモデルと永続化
+    // =================================================================================
+    const createNewPatient = () => ({
+        id: `pid_${Date.now()}`,
+        name: "新規患者",
+        createdAt: new Date().toISOString(),
+        chartData: {
+            vitals: {},
+            consciousness: {},
+            physical: {},
+            social: {},
+            opqrst: {}
+        },
+        examData: {
+            abcde: {}
+        },
+        diagnosisData: {
+            selectionOrder: [],
+            recordedDiagnoses: {}, // { symptomName: [disease1, disease2] }
+            selectedKeywords: []
+        },
+        labData: [] // [{type, date, results}]
     });
 
-    // Initialize the first app by default
-    switchApp('app1');
+    const loadPatients = () => {
+        const data = localStorage.getItem('kyukyuShinryoAppPatients');
+        patients = data ? JSON.parse(data) : [];
+    };
 
+    const savePatients = () => {
+        localStorage.setItem('kyukyuShinryoAppPatients', JSON.stringify(patients));
+    };
+    
+    const getActivePatient = () => {
+        return patients.find(p => p.id === activePatientId);
+    }
 
-    // ===== App 1: カルテ記載支援 =====
-    function initializeChartSupportApp() {
-        // ===== DOM要素の取得 =====
-        const formElements = {
-            name: document.getElementById('name'),
-            age: document.getElementById('age'),
-            genderGroup: document.getElementById('gender'),
-            historyTags: document.getElementById('history-tags'),
-            surgeryHistory: document.getElementById('surgery-history'),
-            allergyTags: document.getElementById('allergy-tags'),
-            otherAllergies: document.getElementById('other-allergies'),
-            medSuggestionContainer: document.getElementById('med-suggestion-tags'),
-            medListContainer: document.getElementById('medication-list'),
-            addMedRowBtn: document.getElementById('add-med-row'),
-            smokingStatusGroup: document.getElementById('smoking-status'),
-            smokingDetailsContainer: document.getElementById('smoking-details'),
-            drinkingStatusGroup: document.getElementById('drinking-status'),
-            drinkingDetailsContainer: document.getElementById('drinking-details'),
-            adlAssessmentContainer: document.getElementById('adl-assessment'),
-            adlScoreDisplay: document.getElementById('adl-score'),
-            outputMemo: document.getElementById('output-memo'),
-            copyBtn: document.getElementById('copy-button-app1')
+    // =================================================================================
+    // 初期化処理
+    // =================================================================================
+    const initializeApp = async () => {
+        // 外部JSONデータの読み込み
+        try {
+            const [histories, medSugs, medicalData, symptomKeywords, testItems] = await Promise.all([
+                fetch('histories.json').then(res => res.json()),
+                fetch('med_suggestions.json').then(res => res.json()),
+                fetch('medicalData.json').then(res => res.json()),
+                fetch('symptomKeywords.json').then(res => res.json()),
+                fetch('test_items.json').then(res => res.json())
+            ]);
+            appData = { histories, medSugs, medicalData, symptomKeywords, testItems };
+        } catch (error) {
+            console.error("Failed to load initial data:", error);
+            alert("アプリケーションデータの読み込みに失敗しました。");
+            return;
+        }
+
+        // 患者データのロードと表示
+        loadPatients();
+        renderPatientList();
+        if (patients.length > 0) {
+            setActivePatient(patients[0].id);
+        } else {
+            showEmptyState();
+        }
+
+        // イベントリスナーの設定
+        newPatientBtn.addEventListener('click', handleNewPatient);
+        patientListEl.addEventListener('click', handlePatientSelect);
+        appNav.addEventListener('click', handleNavClick);
+        
+        // 各機能モジュールの初期化
+        initializeChartApp();
+        initializeExamApp();
+        initializeDiagnosisApp();
+        initializeLabApp();
+    };
+
+    // =================================================================================
+    // 患者管理
+    // =================================================================================
+    const renderPatientList = () => {
+        patientListEl.innerHTML = '';
+        patients.sort((a,b) => new Date(b.createdAt) - new Date(a.createdAt));
+        patients.forEach(p => {
+            const div = document.createElement('div');
+            div.className = `patient-item ${p.id === activePatientId ? 'active' : ''}`;
+            div.textContent = p.name || '名称未設定';
+            div.dataset.id = p.id;
+            patientListEl.appendChild(div);
+        });
+    };
+    
+    const setActivePatient = (id) => {
+        activePatientId = id;
+        const patient = getActivePatient();
+        if (patient) {
+            currentPatientNameEl.textContent = `編集中: ${patient.name || '名称未設定'}`;
+            loadPatientDataIntoUI();
+            renderPatientList();
+            document.querySelector('.main-content').style.display = 'flex';
+        }
+    };
+    
+    const showEmptyState = () => {
+        currentPatientNameEl.textContent = '患者を作成または選択してください';
+        document.querySelector('.main-content').style.display = 'none';
+    }
+    
+    const handleNewPatient = () => {
+        const newPatient = createNewPatient();
+        patients.push(newPatient);
+        savePatients();
+        setActivePatient(newPatient.id);
+    };
+    
+    const handlePatientSelect = (e) => {
+        if(e.target.classList.contains('patient-item')) {
+            setActivePatient(e.target.dataset.id);
+        }
+    };
+    
+    const loadPatientDataIntoUI = () => {
+        const patient = getActivePatient();
+        if(!patient) return;
+        
+        // Chart App Data
+        const chartData = patient.chartData || {};
+        chartAppEl.querySelectorAll('[data-key]').forEach(el => {
+            const keyPath = el.dataset.key;
+            const keys = keyPath.split('.');
+            let value = keys.reduce((obj, key) => (obj && obj[key] !== 'undefined') ? obj[key] : undefined, chartData);
+            if (value === undefined) value = '';
+
+            if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                el.value = value;
+            } else if (el.classList.contains('button-group')) {
+                const values = Array.isArray(value) ? value : [value];
+                el.querySelectorAll('button').forEach(btn => {
+                    btn.classList.toggle('active', values.includes(btn.dataset.value));
+                });
+            }
+        });
+
+        // Exam App Data
+        const examData = patient.examData || {};
+        document.getElementById('app-exam').querySelectorAll('[data-key]').forEach(el => {
+            const keyPath = el.dataset.key;
+            const keys = keyPath.split('.');
+            let value = keys.reduce((obj, key) => (obj && obj[key] !== 'undefined') ? obj[key] : undefined, examData);
+            if(value !== undefined) el.value = value;
+        });
+        
+        // Diagnosis App
+        loadDiagnosisData();
+
+        // Lab App
+        renderLabHistory();
+    };
+
+    // =================================================================================
+    // ナビゲーション
+    // =================================================================================
+    const handleNavClick = (e) => {
+        if (e.target.matches('.nav-button')) {
+            const targetId = e.target.dataset.target;
+            appNav.querySelector('.active').classList.remove('active');
+            e.target.classList.add('active');
+            appContents.forEach(content => {
+                content.classList.toggle('active', content.id === targetId);
+            });
+        }
+    };
+
+    // =================================================================================
+    // 自動保存ロジック
+    // =================================================================================
+    const debounce = (func, delay) => {
+        let timeout;
+        return function(...args) {
+            clearTimeout(timeout);
+            timeout = setTimeout(() => func.apply(this, args), delay);
         };
+    };
 
+    const handleAutoSave = (e) => {
+        const patient = getActivePatient();
+        if (!patient || !e.target.dataset.key) return;
+
+        const keyPath = e.target.dataset.key;
+        const keys = keyPath.split('.');
+        let current = patient.chartData;
+
+        // Ensure nested objects exist
+        for (let i = 0; i < keys.length - 1; i++) {
+            if (!current[keys[i]]) current[keys[i]] = {};
+            current = current[keys[i]];
+        }
+
+        let value;
+        if (e.target.parentElement.classList.contains('button-group')) {
+             const activeButtons = e.target.parentElement.querySelectorAll('button.active');
+             value = Array.from(activeButtons).map(btn => btn.dataset.value);
+             // If only one value possible, don't use array
+             if (['gender', 'social.smoking', 'social.drinking', 'triage'].includes(keyPath)) {
+                 value = value[0] || '';
+             }
+        } else {
+            value = e.target.value;
+        }
+
+        current[keys[keys.length - 1]] = value;
+        
+        // Update patient name in list if changed
+        if (keyPath === 'name') {
+            renderPatientList();
+            currentPatientNameEl.textContent = `編集中: ${value || '名称未設定'}`;
+        }
+        
+        savePatients();
+    };
+
+    // =================================================================================
+    // カルテ記載支援 (App 1)
+    // =================================================================================
+    function initializeChartApp() {
+        // ADL項目の生成
         const adlItems = [
             { label: '食事', points: [10, 5, 0], options: ['自立', '一部介助', '全介助'] },
             { label: '移乗', points: [15, 10, 5, 0], options: ['自立', '監視/助言', '一部介助', '全介助'] },
@@ -79,797 +254,279 @@ document.addEventListener('DOMContentLoaded', () => {
             { label: '排便管理', points: [10, 5, 0], options: ['失禁なし', '時々失禁', '失禁あり'] },
             { label: '排尿管理', points: [10, 5, 0], options: ['失禁なし', '時々失禁', '失禁あり'] },
         ];
-        
-        let historyList = [];
-        let medSuggestions = {};
+        const adlContainer = document.getElementById('adl-assessment');
+        adlItems.forEach((item, index) => {
+             const div = document.createElement('div');
+             div.innerHTML = `<label>${item.label}</label><select data-key="adl.${item.label}"></select>`;
+             const select = div.querySelector('select');
+             item.options.forEach((opt, optIndex) => {
+                 select.innerHTML += `<option value="${item.points[optIndex]}">${opt} (${item.points[optIndex]}点)</option>`;
+             });
+             adlContainer.appendChild(div);
+        });
 
-        async function initialize() {
-            try {
-                const [historiesRes, medsRes] = await Promise.all([
-                    fetch('histories.json'),
-                    fetch('med_suggestions.json')
-                ]);
-                historyList = await historiesRes.json();
-                medSuggestions = await medsRes.json();
-            } catch (error) {
-                console.error('設定ファイルの読み込みに失敗しました:', error);
-                alert('設定ファイルの読み込みに失敗しました。');
-                return;
-            }
+        // 既往歴タグの生成
+        const historyTagsContainer = document.getElementById('history-tags');
+        appData.histories.forEach(history => {
+            historyTagsContainer.innerHTML += `<button data-value="${history}">${history}</button>`;
+        });
 
-            historyList.forEach(history => {
-                const button = document.createElement('button');
-                button.dataset.value = history;
-                button.textContent = history;
-                formElements.historyTags.appendChild(button);
-            });
-
-            adlItems.forEach((item, index) => {
-                const div = document.createElement('div');
-                div.className = 'adl-item';
-                const label = document.createElement('label');
-                label.textContent = item.label;
-                const select = document.createElement('select');
-                select.dataset.index = index;
-                item.options.forEach((opt, optIndex) => {
-                    const option = document.createElement('option');
-                    option.value = item.points[optIndex];
-                    option.textContent = `${opt} (${option.value}点)`;
-                    select.appendChild(option);
-                });
-                div.appendChild(label);
-                div.appendChild(select);
-                formElements.adlAssessmentContainer.appendChild(div);
-            });
-
-            document.querySelector('#app1 .container-app1').addEventListener('input', updateOutput);
-            document.querySelector('#app1 .container-app1').addEventListener('click', (e) => {
-                if (e.target.tagName === 'BUTTON' && !e.target.id.includes('copy') && !e.target.id.includes('add')) {
-                    if(e.target.parentElement.classList.contains('button-group')) {
-                        e.target.classList.toggle('active');
-                    }
-                    if(e.target.parentElement.id === 'med-suggestion-tags') {
-                        toggleMedication(e.target.dataset.value);
-                    }
-                    if(e.target.parentElement.id === 'smoking-status') handleSmokingDetails(e.target);
-                    if(e.target.parentElement.id === 'drinking-status') handleDrinkingDetails(e.target);
-                    updateOutput();
+        chartAppEl.addEventListener('input', debounce(handleAutoSave, 500));
+        chartAppEl.addEventListener('click', e => {
+            if(e.target.tagName === 'BUTTON' && e.target.parentElement.classList.contains('button-group')) {
+                // シングルセレクトの制御
+                if(['gender', 'triage'].includes(e.target.parentElement.dataset.key)) {
+                    e.target.parentElement.querySelectorAll('button').forEach(b => b.classList.remove('active'));
                 }
-            });
-
-            formElements.addMedRowBtn.addEventListener('click', () => addMedicationRow());
-            formElements.medListContainer.addEventListener('click', (e) => {
-                if (e.target.classList.contains('delete-button')) {
-                    e.target.closest('.med-row').remove();
-                    updateOutput();
-                }
-            });
-            formElements.copyBtn.addEventListener('click', copyToClipboard);
-            updateOutput();
-        }
-
-        function getActiveButtonValues(groupElement) {
-            return Array.from(groupElement.querySelectorAll('button.active')).map(btn => btn.dataset.value);
-        }
-
-        function toggleMedication(medName) {
-            const existingMeds = Array.from(formElements.medListContainer.querySelectorAll('input[type="text"]')).map(input => input.value);
-            if (existingMeds.includes(medName)) {
-                formElements.medListContainer.querySelectorAll('.med-row').forEach(row => {
-                    if (row.querySelector('input[type="text"]').value === medName) {
-                        row.remove();
-                    }
-                });
-            } else {
-                addMedicationRow(medName);
+                e.target.classList.toggle('active');
+                handleAutoSave(e); // 即時保存
             }
-        }
+        });
         
-        function addMedicationRow(name = '', usage = '') {
-            const div = document.createElement('div');
-            div.className = 'med-row';
-            div.innerHTML = `
-                <input type="text" class="med-name" placeholder="薬剤名" value="${name}">
-                <input type="text" class="med-usage" placeholder="用法・用量" value="${usage}">
-                <button class="delete-button">×</button>
-            `;
-            formElements.medListContainer.appendChild(div);
-        }
+        // TODO: 内服薬管理ロジック
         
-        function handleSmokingDetails(targetButton) {
-            const value = targetButton.dataset.value;
-            if(value === 'なし' || targetButton.classList.contains('active')) {
-                 formElements.smokingDetailsContainer.innerHTML = '';
-            } else {
-                formElements.smokingDetailsContainer.innerHTML = `
-                    <input type="number" id="smoking-years" placeholder="年数"> 年間
-                    <input type="number" id="smoking-amount" placeholder="本数"> 本/日
-                `;
-            }
-        }
+        document.getElementById('copy-chart-btn').addEventListener('click', generateAndCopyChart);
+    }
+    
+    function generateAndCopyChart() {
+        const patient = getActivePatient();
+        if(!patient) return;
+
+        const chart = patient.chartData || {};
+        const exam = patient.examData || {};
+        const diag = patient.diagnosisData || {};
+        const labs = patient.labData || [];
         
-        function handleDrinkingDetails(targetButton) {
-            const value = targetButton.dataset.value;
-             if(value === 'なし' || targetButton.classList.contains('active')) {
-                formElements.drinkingDetailsContainer.innerHTML = '';
-            } else {
-                formElements.drinkingDetailsContainer.innerHTML = `
-                    <input type="text" id="drinking-type" placeholder="種類（ビール, 日本酒など）">
-                    <input type="text" id="drinking-amount" placeholder="量（350ml/日など）">
-                `;
+        const adlScore = Object.values(chart.adl || {}).reduce((sum, val) => sum + Number(val), 0);
+
+        let output = `
+## S) 主観的情報
+- ID: ${chart.id || ''}
+- 氏名: ${chart.name || ''}様 (${chart.age || ''}歳, ${chart.gender || ''})
+- 主訴: ${chart.cc || ''}
+- 現病歴: ${chart.pi || ''}
+  - Onset: ${chart.opqrst?.onset || ''}
+  - P/P: ${chart.opqrst?.pp || ''}
+  - Quality: ${chart.opqrst?.quality || ''}
+  - Region/Radiation: ${chart.opqrst?.rr || ''}
+  - Severity: ${chart.opqrst?.severity || ''}
+  - Time: ${chart.opqrst?.time || ''}
+- 既往歴: ${(chart.pmh || []).join(', ')}. ${chart.pmh_text || ''}
+- 内服薬: (記載)
+- アレルギー: ${(chart.allergies || []).join(', ')}. ${chart.allergies_text || ''}
+- 生活歴: 職業(${chart.social?.occupation}), 運動(${chart.social?.exercise}), 喫煙(${chart.social?.smoking}), 飲酒(${chart.social?.drinking})
+- 家族歴: ${chart.family_history || ''}
+
+## O) 客観的情報
+- Vital: BT ${chart.vitals?.bt}℃, HR ${chart.vitals?.hr}, BP ${chart.vitals?.bp_s}/${chart.vitals?.bp_d}, RR ${chart.vitals?.rr}, SpO2 ${chart.vitals?.spo2}%
+- 意識: JCS ${chart.consciousness?.jcs}, GCS ${chart.consciousness?.gcs}
+- 身体: ${chart.physical?.height}cm, ${chart.physical?.weight}kg
+- ADL: ${adlScore}点
+- ABCDE: A(${exam.abcde?.a}), B(${exam.abcde?.b}), C(${exam.abcde?.c}), D(${exam.abcde?.d}), E(${exam.abcde?.e})
+- H-t-T: 頭頸部(${exam.head}), 胸部(${exam.chest}), 腹部(${exam.abdomen}), 四肢(${exam.extremities})
+
+## A) 評価
+- トリアージ: ${chart.triage || ''}
+- 鑑別疾患: ${(diag.recordedDiagnoses ? Object.entries(diag.recordedDiagnoses).map(([s, d]) => `#${s}\n- ${d.join('\n- ')}`).join('\n') : '')}
+
+## P) 計画
+- 治療: ${chart.plan?.treatment || ''}
+- 検査: ${chart.plan?.tests || ''}
+        `.trim();
+        
+        const outputEl = document.getElementById('final-chart-output');
+        outputEl.value = output;
+        navigator.clipboard.writeText(output).then(() => alert('カルテをコピーしました'));
+    }
+
+    // =================================================================================
+    // 身体所見 (App 2)
+    // =================================================================================
+    function initializeExamApp() {
+        document.getElementById('app-exam').addEventListener('input', debounce(e => {
+            const patient = getActivePatient();
+            if (!patient || !e.target.dataset.key) return;
+            const keyPath = e.target.dataset.key;
+            const keys = keyPath.split('.');
+            let current = patient.examData;
+            for (let i = 0; i < keys.length - 1; i++) {
+                if (!current[keys[i]]) current[keys[i]] = {};
+                current = current[keys[i]];
             }
-        }
-
-        function calculateAdlScore() {
-            let total = 0;
-            formElements.adlAssessmentContainer.querySelectorAll('select').forEach(select => {
-                total += Number(select.value);
-            });
-            formElements.adlScoreDisplay.textContent = `ADL合計: ${total} / 100点`;
-            return total;
-        }
-
-        function updateMedSuggestions(histories) {
-            formElements.medSuggestionContainer.innerHTML = '';
-            const suggestions = new Set();
-            histories.forEach(history => {
-                if(medSuggestions[history]) {
-                    medSuggestions[history].forEach(med => suggestions.add(med));
-                }
-            });
-            
-            suggestions.forEach(med => {
-                const btn = document.createElement('button');
-                btn.dataset.value = med;
-                btn.textContent = med;
-                formElements.medSuggestionContainer.appendChild(btn);
-            });
-        }
-
-        function updateOutput() {
-            const values = {
-                name: formElements.name.value,
-                age: formElements.age.value,
-                gender: getActiveButtonValues(formElements.genderGroup).join(', '),
-                histories: getActiveButtonValues(formElements.historyTags),
-                surgery: formElements.surgeryHistory.value,
-                allergies: getActiveButtonValues(formElements.allergyTags).join(', ') || '特になし',
-                otherAllergies: formElements.otherAllergies.value,
-                medications: Array.from(formElements.medListContainer.querySelectorAll('.med-row')).map(row => {
-                    const name = row.querySelector('.med-name').value;
-                    const usage = row.querySelector('.med-usage').value;
-                    return `${name} ${usage}`.trim();
-                }).filter(med => med),
-                smokingStatus: getActiveButtonValues(formElements.smokingStatusGroup).join(''),
-                drinkingStatus: getActiveButtonValues(formElements.drinkingStatusGroup).join(''),
-                adlScore: calculateAdlScore()
-            };
-
-            updateMedSuggestions(values.histories);
-
-            let smokingText = values.smokingStatus;
-            if (smokingText && smokingText !== 'なし') {
-                const years = document.getElementById('smoking-years')?.value || '';
-                const amount = document.getElementById('smoking-amount')?.value || '';
-                smokingText += ` (${amount}本/日 x ${years}年)`;
-            }
-            
-            let drinkingText = values.drinkingStatus;
-            if (drinkingText && drinkingText !== 'なし') {
-                const type = document.getElementById('drinking-type')?.value || '';
-                const amount = document.getElementById('drinking-amount')?.value || '';
-                drinkingText += ` (${type}を${amount})`;
-            }
-
-            const output = `
-【患者情報】
-氏名：${values.name || '未入力'} 様
-年齢：${values.age || '未入力'} 歳
-性別：${values.gender || '未選択'}
-
-【既往歴】
-・${values.histories.join('、') || '特記事項なし'}
-${values.surgery ? '・手術歴/特記事項：' + values.surgery : ''}
-
-【アレルギー】
-・${values.allergies}
-${values.otherAllergies ? '・その他：' + values.otherAllergies : ''}
-
-【内服薬】
-${values.medications.length > 0 ? values.medications.map(m => `・${m}`).join('\n') : '・なし'}
-
-【生活歴】
-喫煙：${smokingText || '未選択'}
-飲酒：${drinkingText || '未選択'}
-
-【ADL】
-Barthel Index: ${values.adlScore}点
-            `.trim();
-
-            formElements.outputMemo.value = output;
-        }
-
-        function copyToClipboard() {
-            if (!navigator.clipboard) {
-                formElements.outputMemo.select();
-                document.execCommand('copy');
-            } else {
-                navigator.clipboard.writeText(formElements.outputMemo.value).catch(err => {
-                    console.error('クリップボードへのコピーに失敗しました: ', err);
-                });
-            }
-            formElements.copyBtn.textContent = 'コピーしました！';
-            setTimeout(() => {
-                formElements.copyBtn.textContent = 'クリップボードにコピー';
-            }, 1500);
-        }
-
-        initialize();
+            current[keys[keys.length - 1]] = e.target.value;
+            savePatients();
+        }, 500));
     }
 
 
-    // ===== App 2: 症候鑑別支援 =====
-    function initializeDiagnosisSupportApp() {
+    // =================================================================================
+    // 症候鑑別 (App 3)
+    // =================================================================================
+    function initializeDiagnosisApp() {
         const symptomSelect = document.getElementById('symptom-select');
         const resultsContainer = document.getElementById('results-container');
-        const selectedKeywordsContainer = document.getElementById('selected-keywords-tags');
-        const copyTextArea = document.getElementById('copy-textarea');
-        const copyButton = document.getElementById('copy-button-app2');
+        
+        appData.medicalData.forEach(item => {
+             symptomSelect.innerHTML += `<option value="${item.symptom}">${item.symptom}</option>`;
+        });
 
-        let medicalData = [];
-        let keywordsForDetection = [];
-        let selectionOrder = [];
-        let lastSelectedSet = new Set();
-        let pinnedItems = new Map();
-        let selectedKeywords = new Set();
-        let recordedDiagnoses = new Map();
-
-        async function loadDataAndInitialize() {
-            try {
-                const [medicalResponse, keywordsResponse] = await Promise.all([
-                    fetch('medicalData.json'),
-                    fetch('symptomKeywords.json')
-                ]);
-                medicalData = await medicalResponse.json();
-                keywordsForDetection = await keywordsResponse.json();
-                initialize();
-            } catch (error) {
-                console.error('データの読み込みに失敗しました:', error);
-                resultsContainer.innerHTML = '<p style="color: red;">アプリケーションデータの読み込みに失敗しました。</p>';
-            }
-        }
-
-        function initialize() {
-            populateSymptomDropdown();
-            symptomSelect.addEventListener('change', handleSymptomSelectionChange);
-            selectedKeywordsContainer.addEventListener('click', handleTagClick);
-            resultsContainer.addEventListener('click', handleCardClick);
-            copyButton.addEventListener('click', handleCopyButtonClick);
-            render();
-        }
-
-        function handleSymptomSelectionChange() {
-            const currentSelectedSet = new Set(Array.from(symptomSelect.selectedOptions).map(opt => opt.value));
-            selectionOrder = selectionOrder.filter(symptom => currentSelectedSet.has(symptom));
-            currentSelectedSet.forEach(symptom => {
-                if (!lastSelectedSet.has(symptom)) {
-                    selectionOrder.push(symptom);
-                }
-            });
-            lastSelectedSet = currentSelectedSet;
-            render();
-        }
-
-        function populateSymptomDropdown() {
-            // Avoid re-populating if already done
-            if(symptomSelect.options.length > 0) return;
-            
-            const symptoms = medicalData.map(item => item.symptom);
-            const uniqueSymptoms = [...new Set(symptoms)];
-            uniqueSymptoms.forEach(symptom => {
-                const option = document.createElement('option');
-                option.value = symptom;
-                option.textContent = symptom;
-                symptomSelect.appendChild(option);
-            });
-        }
-
-        function render() {
-            renderResults();
-            renderSelectedKeywordTags();
-            updateCopyTextArea();
-        }
-
-        function renderResults() {
-            resultsContainer.innerHTML = '';
-            if (selectionOrder.length === 0) {
-                resultsContainer.innerHTML = '<p>症候を選択すると、ここに関連する鑑別疾患が表示されます。</p>';
-                return;
-            }
-
-            selectionOrder.forEach((symptomName, index) => {
-                const symptomData = medicalData.find(d => d.symptom === symptomName);
-                if (!symptomData) return;
-
-                const groupDiv = document.createElement('div');
-                groupDiv.className = 'symptom-group';
-                groupDiv.dataset.symptomName = symptomName;
-                if (index === 0) {
-                    groupDiv.classList.add('primary');
-                }
-
-                const title = document.createElement('h2');
-                title.textContent = `${symptomName} の鑑別疾患`;
-                if (index === 0) {
-                    const badge = document.createElement('span');
-                    badge.className = 'primary-badge';
-                    badge.textContent = '主訴';
-                    title.appendChild(badge);
-                }
-                groupDiv.appendChild(title);
+        symptomSelect.addEventListener('change', () => {
+            const patient = getActivePatient();
+            if (!patient) return;
+            patient.diagnosisData.selectionOrder = Array.from(symptomSelect.selectedOptions).map(opt => opt.value);
+            renderDiagnosisResults();
+            savePatients();
+        });
+        
+        resultsContainer.addEventListener('click', e => {
+            if (e.target.type === 'checkbox') {
+                const diseaseName = e.target.dataset.diseaseName;
+                const symptomName = e.target.closest('.symptom-group').dataset.symptomName;
+                const patient = getActivePatient();
+                if (!patient.diagnosisData.recordedDiagnoses) patient.diagnosisData.recordedDiagnoses = {};
+                if (!patient.diagnosisData.recordedDiagnoses[symptomName]) patient.diagnosisData.recordedDiagnoses[symptomName] = [];
                 
-                const pinnedSet = pinnedItems.get(symptomName) || new Set();
-                const sortedDiagnoses = [...symptomData.differential_diagnoses].sort((a, b) => {
-                    const aIsPinned = pinnedSet.has(a.name);
-                    const bIsPinned = pinnedSet.has(b.name);
-                    if (aIsPinned && !bIsPinned) return -1;
-                    if (!aIsPinned && bIsPinned) return 1;
-                    return 0;
-                });
-
-                if (sortedDiagnoses.length === 0) {
-                    groupDiv.appendChild(document.createElement('p')).textContent = 'この症候に関連する鑑別疾患は見つかりませんでした。';
+                const list = patient.diagnosisData.recordedDiagnoses[symptomName];
+                if (e.target.checked) {
+                    if (!list.includes(diseaseName)) list.push(diseaseName);
                 } else {
-                    sortedDiagnoses.forEach(disease => {
-                        const card = createDiseaseCard(disease, symptomName);
-                        groupDiv.appendChild(card);
-                    });
+                    const index = list.indexOf(diseaseName);
+                    if (index > -1) list.splice(index, 1);
                 }
-                resultsContainer.appendChild(groupDiv);
-            });
-        }
-
-        function createDiseaseCard(disease, symptomName) {
-            const cardDiv = document.createElement('div');
-            cardDiv.className = 'disease-card';
-            const isPinned = pinnedItems.get(symptomName)?.has(disease.name);
-            if (isPinned) cardDiv.classList.add('pinned');
-
-            const cardHeader = document.createElement('div');
-            cardHeader.className = 'disease-card-header';
-
-            const checkbox = document.createElement('input');
-            checkbox.type = 'checkbox';
-            checkbox.className = 'diagnosis-checkbox';
-            checkbox.dataset.diseaseName = disease.name;
-            checkbox.checked = recordedDiagnoses.get(symptomName)?.has(disease.name) || false;
-            cardHeader.appendChild(checkbox);
-
-            const diseaseNameEl = document.createElement('h3');
-            diseaseNameEl.textContent = disease.name;
-            cardHeader.appendChild(diseaseNameEl);
-
-            const pinButton = document.createElement('button');
-            pinButton.className = 'pin-button';
-            pinButton.textContent = '📌';
-            pinButton.dataset.diseaseName = disease.name;
-            pinButton.title = '最上位に固定/解除';
-            if (isPinned) pinButton.classList.add('pinned');
-            cardHeader.appendChild(pinButton);
-            cardDiv.appendChild(cardHeader);
-
-            const interviewTitle = document.createElement('h4');
-            interviewTitle.textContent = '医療面接のポイント';
-            cardDiv.appendChild(interviewTitle);
-            disease.interview_points.forEach(point => cardDiv.appendChild(document.createElement('p')).innerHTML = highlightKeywords(point));
-
-            const examTitle = document.createElement('h4');
-            examTitle.textContent = '身体診察のポイント';
-            cardDiv.appendChild(examTitle);
-            disease.physical_exam_points.forEach(point => cardDiv.appendChild(document.createElement('p')).innerHTML = highlightKeywords(point));
-
-            return cardDiv;
-        }
-
-        function highlightKeywords(text) {
-            if (!Array.isArray(keywordsForDetection)) return text;
-            let highlightedText = text;
-            keywordsForDetection.forEach(keyword => {
-                if (!keyword?.trim()) return;
-                const isHighlighted = selectedKeywords.has(keyword) ? 'highlighted' : '';
-                try {
-                    const regex = new RegExp(keyword.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'), 'g');
-                    highlightedText = highlightedText.replace(regex, match => {
-                        if (highlightedText.includes(`<span class="clickable-keyword`)) {
-                            const tempText = highlightedText.substring(0, highlightedText.indexOf(match));
-                            if ((tempText.match(/<span/g) || []).length > (tempText.match(/<\/span>/g) || []).length) return match;
-                        }
-                        return `<span class="clickable-keyword ${isHighlighted}" data-keyword="${match}">${match}</span>`;
-                    });
-                } catch (e) { console.error("Invalid regex pattern for keyword:", keyword); }
-            });
-            return highlightedText;
-        }
+                savePatients();
+            }
+        });
+    }
+    
+    const loadDiagnosisData = () => {
+        const patient = getActivePatient();
+        if(!patient || !patient.diagnosisData) return;
+        const diagData = patient.diagnosisData;
+        const symptomSelect = document.getElementById('symptom-select');
+        Array.from(symptomSelect.options).forEach(opt => {
+            opt.selected = (diagData.selectionOrder || []).includes(opt.value);
+        });
+        renderDiagnosisResults();
+    }
+    
+    const renderDiagnosisResults = () => {
+        const patient = getActivePatient();
+        if(!patient) return;
+        const { selectionOrder = [], recordedDiagnoses = {} } = patient.diagnosisData;
+        const container = document.getElementById('results-container');
+        container.innerHTML = '';
         
-        function handleCardClick(event) {
-            const keywordTarget = event.target.closest('.clickable-keyword');
-            const pinTarget = event.target.closest('.pin-button');
-            const checkboxTarget = event.target.closest('.diagnosis-checkbox');
+        selectionOrder.forEach(symptomName => {
+            const symptomData = appData.medicalData.find(d => d.symptom === symptomName);
+            if (!symptomData) return;
 
-            if (keywordTarget) handleKeywordClick(keywordTarget);
-            else if (pinTarget) handlePinClick(pinTarget);
-            else if (checkboxTarget) handleDiagnosisRecord(checkboxTarget);
-        }
-
-        function handleDiagnosisRecord(target) {
-            const diseaseName = target.dataset.diseaseName;
-            const symptomName = target.closest('.symptom-group').dataset.symptomName;
-            if (!recordedDiagnoses.has(symptomName)) {
-                recordedDiagnoses.set(symptomName, new Set());
-            }
-            const recordedSet = recordedDiagnoses.get(symptomName);
-            if (target.checked) {
-                recordedSet.add(diseaseName);
-            } else {
-                recordedSet.delete(diseaseName);
-            }
-            updateCopyTextArea();
-        }
-
-        function handleKeywordClick(target) {
-            const keyword = target.dataset.keyword;
-            if (selectedKeywords.has(keyword)) {
-                selectedKeywords.delete(keyword);
-            } else {
-                selectedKeywords.add(keyword);
-            }
-            render();
-        }
-        
-        function handlePinClick(target) {
-            const diseaseName = target.dataset.diseaseName;
-            const symptomName = target.closest('.symptom-group').dataset.symptomName;
-            if (!pinnedItems.has(symptomName)) {
-                pinnedItems.set(symptomName, new Set());
-            }
-            const pinnedSet = pinnedItems.get(symptomName);
-            if (pinnedSet.has(diseaseName)) {
-                pinnedSet.delete(diseaseName);
-            } else {
-                pinnedSet.add(diseaseName);
-            }
-            render();
-        }
-        
-        function handleTagClick(event) {
-            const target = event.target.closest('.keyword-tag');
-            if (target) {
-                const keyword = target.dataset.keyword;
-                if (keyword && selectedKeywords.has(keyword)) {
-                    selectedKeywords.delete(keyword);
-                    render();
-                }
-            }
-        }
-        
-        function handleCopyButtonClick() {
-            if (!copyTextArea.value) return;
-            navigator.clipboard.writeText(copyTextArea.value).then(() => {
-                const originalText = copyButton.textContent;
-                copyButton.textContent = 'コピーしました！';
-                setTimeout(() => {
-                    copyButton.textContent = originalText;
-                }, 2000);
-            }).catch(err => {
-                console.error('クリップボードへのコピーに失敗しました: ', err);
-                alert('コピーに失敗しました。');
+            const groupDiv = document.createElement('div');
+            groupDiv.className = 'symptom-group';
+            groupDiv.dataset.symptomName = symptomName;
+            groupDiv.innerHTML = `<h3>${symptomName}の鑑別疾患</h3>`;
+            
+            symptomData.differential_diagnoses.forEach(disease => {
+                const isChecked = recordedDiagnoses[symptomName]?.includes(disease.name) || false;
+                const card = document.createElement('div');
+                card.className = 'disease-card';
+                card.innerHTML = `
+                    <div class="disease-card-header">
+                        <input type="checkbox" data-disease-name="${disease.name}" ${isChecked ? 'checked' : ''}>
+                        <h4>${disease.name}</h4>
+                    </div>
+                    <p><b>問診:</b> ${disease.interview_points.join(', ')}</p>
+                    <p><b>診察:</b> ${disease.physical_exam_points.join(', ')}</p>
+                `;
+                groupDiv.appendChild(card);
             });
-        }
-
-        function renderSelectedKeywordTags() {
-            selectedKeywordsContainer.innerHTML = '';
-            if (selectedKeywords.size === 0) {
-                selectedKeywordsContainer.innerHTML = '<span>なし</span>';
-                return;
-            }
-            selectedKeywords.forEach(keyword => {
-                const tag = document.createElement('span');
-                tag.className = 'keyword-tag';
-                tag.textContent = keyword;
-                tag.dataset.keyword = keyword;
-                tag.title = 'クリックして選択解除';
-                tag.appendChild(document.createElement('span')).className = 'remove-tag';
-                selectedKeywordsContainer.appendChild(tag);
-            });
-        }
-
-        function updateCopyTextArea() {
-            let text = '';
-            if (selectionOrder.length > 0) {
-                text += '■ 症候\n';
-                text += `主訴: ${selectionOrder[0]}\n`;
-                if (selectionOrder.length > 1) {
-                    text += `その他: ${selectionOrder.slice(1).join(', ')}\n`;
-                }
-                text += '\n';
-            }
-            if (recordedDiagnoses.size > 0) {
-                let hasRecorded = false;
-                let diagnosisText = '■ 鑑別疾患\n';
-                recordedDiagnoses.forEach((diseases, symptom) => {
-                    if (diseases.size > 0) {
-                        hasRecorded = true;
-                        diagnosisText += `# ${symptom}\n`;
-                        diseases.forEach(disease => {
-                            diagnosisText += `- ${disease}\n`;
-                        });
-                    }
-                });
-                if(hasRecorded) text += diagnosisText + '\n';
-            }
-            if (selectedKeywords.size > 0) {
-                text += '■ 選択キーワード (身体所見など)\n';
-                selectedKeywords.forEach(keyword => {
-                    text += `- ${keyword}\n`;
-                });
-                text += '\n';
-            }
-            copyTextArea.value = text.trim();
-        }
-        loadDataAndInitialize();
+            container.appendChild(groupDiv);
+        });
     }
 
+    // =================================================================================
+    // 検査結果 (App 4)
+    // =================================================================================
+    function initializeLabApp() {
+        const itemsContainer = document.getElementById('test-items-container');
+        const categories = [...new Set(appData.testItems.map(item => item.category))];
 
-    // ===== App 3: 採血結果入力 =====
-    function initializeBloodTestApp() {
-        async function initializeApp() {
-            try {
-                const response = await fetch('test_items.json');
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                const testItemsDefinition = await response.json();
-                setupApplication(testItemsDefinition);
-            } catch (error) {
-                console.error('検査項目の読み込みに失敗しました:', error);
-                const itemsContainer = document.getElementById('test-items-container');
-                if(itemsContainer) {
-                    itemsContainer.innerHTML = `<p style="color: red;">検査項目の定義ファイル(test_items.json)の読み込みに失敗しました。</p>`;
-                }
-            }
-        }
-
-        function setupApplication(testItemsDefinition) {
-            const form = document.querySelector('#app3 #input-form');
-            const itemsContainer = document.getElementById('test-items-container');
-            const dataList = document.getElementById('data-list');
-            const inputOrder = [];
-            const categories = [...new Set(testItemsDefinition.map(item => item.category))];
-
-            categories.forEach(category => {
-                const categoryItems = testItemsDefinition.filter(item => item.category === category);
-                const isAlwaysVisible = ['血算', '生化学', '電解質'].includes(category);
-                const header = document.createElement(isAlwaysVisible ? 'h2' : 'button');
-                header.textContent = category;
-                if (!isAlwaysVisible) {
-                    header.className = 'accordion-header';
-                    header.type = 'button';
-                }
-                itemsContainer.appendChild(header);
-
-                const content = document.createElement('div');
-                content.className = isAlwaysVisible ? '' : 'accordion-content';
-                itemsContainer.appendChild(content);
-
-                const grid = document.createElement('div');
-                grid.className = 'category-grid';
-                content.appendChild(grid);
-                
-                if (category === '電解質') {
-                    const alwaysVisibleGrid = document.createElement('div');
-                    alwaysVisibleGrid.className = 'category-grid';
-                    content.appendChild(alwaysVisibleGrid);
-
-                    const accordionHeader = document.createElement('button');
-                    accordionHeader.type = 'button';
-                    accordionHeader.className = 'accordion-header';
-                    accordionHeader.textContent = 'その他 (Ca, P, Mg)';
-                    accordionHeader.style.marginTop = '10px';
-                    content.appendChild(accordionHeader);
-                    
-                    const accordionContent = document.createElement('div');
-                    accordionContent.className = 'accordion-content';
-                    content.appendChild(accordionContent);
-                    
-                    const collapsibleGrid = document.createElement('div');
-                    collapsibleGrid.className = 'category-grid';
-                    accordionContent.appendChild(collapsibleGrid);
-
-                    categoryItems.forEach(item => {
-                        const targetGrid = item.alwaysVisible ? alwaysVisibleGrid : collapsibleGrid;
-                        createInputItem(item, targetGrid);
-                    });
-                } else {
-                    categoryItems.forEach(item => createInputItem(item, grid));
-                }
+        categories.forEach(category => {
+            const categoryItems = appData.testItems.filter(item => item.category === category);
+            let gridHtml = `<fieldset><legend>${category}</legend><div class="category-grid">`;
+            categoryItems.forEach(item => {
+                gridHtml += `
+                    <div class="item-group">
+                        <label for="lab-${item.id}">${item.name} (${item.unit})</label>
+                        <input type="number" id="lab-${item.id}" step="${item.step}" data-item-id="${item.id}">
+                        <div class="reference-value">基準値: ${item.min} - ${item.max}</div>
+                    </div>
+                `;
             });
-            
-            function createInputItem(item, parentElement) {
-                const group = document.createElement('div');
-                group.className = 'item-group';
-                const label = document.createElement('label');
-                label.htmlFor = item.id;
-                label.textContent = `${item.name} (${item.unit})`;
-                group.appendChild(label);
-                const input = document.createElement('input');
-                input.type = 'number';
-                input.id = item.id;
-                input.step = item.step;
-                input.dataset.itemId = item.id;
-                group.appendChild(input);
-                const refValue = document.createElement('div');
-                refValue.className = 'reference-value';
-                refValue.textContent = `基準値: ${item.min} - ${item.max}`;
-                group.appendChild(refValue);
-                parentElement.appendChild(group);
-                inputOrder.push(input);
+            gridHtml += `</div></fieldset>`;
+            itemsContainer.innerHTML += gridHtml;
+        });
+
+        document.getElementById('lab-nav').addEventListener('click', e => {
+            if(e.target.matches('.lab-nav-button')) {
+                document.querySelector('.lab-nav-button.active').classList.remove('active');
+                e.target.classList.add('active');
+                document.querySelectorAll('.lab-content').forEach(c => c.classList.remove('active'));
+                document.getElementById(e.target.dataset.target).classList.add('active');
             }
-            
-            itemsContainer.querySelectorAll('.accordion-header').forEach(button => {
-                button.addEventListener('click', () => {
-                    button.classList.toggle('active');
-                    const content = button.nextElementSibling;
-                    if (content.style.maxHeight) {
-                        content.style.maxHeight = null;
-                    } else {
-                        content.style.maxHeight = content.scrollHeight + "px";
-                    }
-                });
-            });
+        });
+        
+        document.getElementById('save-lab-btn').addEventListener('click', () => {
+             const patient = getActivePatient();
+             if(!patient) return;
+             
+             const activeTab = document.querySelector('.lab-nav-button.active').dataset.target;
+             const labResult = {
+                 id: `lab_${Date.now()}`,
+                 date: document.getElementById('lab-date').value || new Date().toISOString().split('T')[0],
+                 type: document.querySelector(`.lab-nav-button.active`).textContent,
+                 results: {}
+             };
 
-            form.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter') {
-                    const target = e.target;
-                    if (target.tagName === 'INPUT') {
-                        e.preventDefault();
-                        const currentIndex = inputOrder.findIndex(input => input.id === target.id);
-                        const nextInput = inputOrder[currentIndex + 1];
-                        if (nextInput) {
-                            nextInput.focus();
-                        } else {
-                            document.querySelector('#app3 #memo').focus();
-                        }
-                    }
-                }
-            });
-
-            itemsContainer.addEventListener('keydown', handleArrowKeys);
-            itemsContainer.addEventListener('focusin', handleFocus);
-            itemsContainer.addEventListener('input', handleInput);
-
-            function handleArrowKeys(e) {
-                if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
-                    const input = e.target;
-                    if (input.type === 'number') {
-                        e.preventDefault();
-                        const item = findItemById(input.dataset.itemId);
-                        if (!item) return;
-                        let value = parseFloat(input.value) || 0;
-                        value += (e.key === 'ArrowUp' ? item.step : -item.step);
-                        input.value = parseFloat(value.toFixed(10));
-                        checkAbnormality(input, item);
-                    }
-                }
-            }
-
-            function handleFocus(e) {
-                const input = e.target;
-                if (input.type === 'number' && !input.value) {
-                    const item = findItemById(input.dataset.itemId);
-                    if (item) {
-                        input.value = item.max; 
-                        checkAbnormality(input, item);
-                    }
-                }
-            }
-            
-            function handleInput(e) {
-                const input = e.target;
-                 if (input.type === 'number') {
-                    const item = findItemById(input.dataset.itemId);
-                    if(item) checkAbnormality(input, item);
-                 }
-            }
-
-            function findItemById(id) {
-                return testItemsDefinition.find(item => item.id === id);
-            }
-
-            function checkAbnormality(input, item) {
-                const value = parseFloat(input.value);
-                if (isNaN(value)) {
-                    input.classList.remove('abnormal');
-                    return;
-                }
-                if (value < item.min || value > item.max) {
-                    input.classList.add('abnormal');
-                } else {
-                    input.classList.remove('abnormal');
-                }
-            }
-
-            form.addEventListener('submit', (e) => {
-                e.preventDefault();
-                const data = {
-                    id: Date.now(),
-                    patientId: document.querySelector('#app3 #patient-id').value,
-                    testDate: document.querySelector('#app3 #test-date').value,
-                    memo: document.querySelector('#app3 #memo').value,
-                    results: {}
-                };
-                testItemsDefinition.forEach(item => {
-                    const input = document.getElementById(item.id);
-                    if(input.value !== '') {
-                        data.results[item.id] = input.value;
-                    }
-                });
-                const savedData = getSavedData();
-                savedData.push(data);
-                localStorage.setItem('bloodTestData', JSON.stringify(savedData));
-                renderDataList();
-                form.reset();
-                document.querySelectorAll('#app3 input.abnormal').forEach(el => el.classList.remove('abnormal'));
-            });
-
-            function getSavedData() {
-                return JSON.parse(localStorage.getItem('bloodTestData')) || [];
-            }
-
-            function renderDataList() {
-                dataList.innerHTML = '';
-                const savedData = getSavedData();
-                savedData.sort((a, b) => new Date(b.testDate) - new Date(a.testDate));
-                savedData.forEach(data => {
-                    const record = document.createElement('div');
-                    record.className = 'data-record';
-                    let resultsHtml = '';
-                    categories.forEach(category => {
-                        const categoryItems = testItemsDefinition.filter(item => item.category === category);
-                        const resultsInCategory = categoryItems
-                            .map(item => data.results[item.id] ? `<li>${item.name}: ${data.results[item.id]}</li>` : '')
-                            .join('');
-
-                        if (resultsInCategory) {
-                            resultsHtml += `<div><strong>${category}</strong><ul>${resultsInCategory}</ul></div>`;
-                        }
-                    });
-
-                    record.innerHTML = `
-                        <button class="delete-button" data-id="${data.id}">&times;</button>
-                        <h3>患者ID: ${data.patientId} | 検査日: ${data.testDate}</h3>
-                        <div class="data-record-grid">${resultsHtml}</div>
-                        ${data.memo ? `<p><strong>メモ:</strong> ${data.memo}</p>` : ''}
-                    `;
-                    dataList.appendChild(record);
-                });
-            }
-
-            dataList.addEventListener('click', (e) => {
-                if (e.target.classList.contains('delete-button')) {
-                    if (confirm('このデータを削除してもよろしいですか？')) {
-                        const idToDelete = Number(e.target.dataset.id);
-                        let savedData = getSavedData();
-                        savedData = savedData.filter(data => data.id !== idToDelete);
-                        localStorage.setItem('bloodTestData', JSON.stringify(savedData));
-                        renderDataList();
-                    }
-                }
-            });
-            
-            document.querySelector('#app3 #test-date').valueAsDate = new Date();
-            renderDataList();
-        }
-
-        initializeApp();
+             if(activeTab === 'lab-blood') {
+                 itemsContainer.querySelectorAll('input[type="number"]').forEach(input => {
+                     if(input.value) {
+                         labResult.results[input.dataset.itemId] = input.value;
+                     }
+                 });
+             } else {
+                 labResult.results.findings = document.querySelector(`#${activeTab} textarea`).value;
+             }
+             
+             patient.labData.push(labResult);
+             savePatients();
+             renderLabHistory();
+             // フォームをリセット
+             document.querySelector(`#${activeTab}`).querySelectorAll('input, textarea').forEach(el => el.value = '');
+        });
     }
+    
+    const renderLabHistory = () => {
+        const patient = getActivePatient();
+        const container = document.getElementById('lab-history-list');
+        container.innerHTML = '';
+        if(!patient || !patient.labData) return;
+        
+        patient.labData.sort((a,b) => new Date(b.date) - new Date(a.date)).forEach(lab => {
+            const item = document.createElement('div');
+            item.className = 'lab-history-item';
+            let resultsText = '';
+            if(lab.type === '採血') {
+                resultsText = Object.entries(lab.results).map(([key, val]) => `${key}: ${val}`).join(', ');
+            } else {
+                resultsText = lab.results.findings;
+            }
+            item.innerHTML = `<h4>${lab.date} - ${lab.type}</h4><p>${resultsText}</p>`;
+            container.appendChild(item);
+        });
+    }
+
+    // =================================================================================
+    // アプリケーション起動
+    // =================================================================================
+    initializeApp();
 });
